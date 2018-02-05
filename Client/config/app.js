@@ -1,7 +1,7 @@
-var app = angular.module("PowerGed", ["ngRoute"]);
+var app = angular.module("PowerGed", ["ngRoute", "ui.tree"]);
 
 app.config(function($routeProvider){
     $routeProvider.when('/', {
-        templateUrl: 'views/home.html'
+        templateUrl: 'views/viewer.html',
     })
 })
