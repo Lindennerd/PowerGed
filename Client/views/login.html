@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/fixes.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center d-md-flex align-items-center">
+            <div class="col-md-4 col-10 border border-dark rounded login-area">
+                <h1>Power GED</h1>
+                <form ng-controller="login">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha:</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-primary d-flex justify-content-center" id="btn-login" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
