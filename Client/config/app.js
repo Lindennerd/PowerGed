@@ -1,4 +1,4 @@
-var app = angular.module("PowerGed", ["ngRoute", "treeControl", "mobile-angular-ui"]);
+var app = angular.module("PowerGed", ["ngRoute", "treeControl"]);
 
 app.config(function($routeProvider){
     $routeProvider.when('/', {

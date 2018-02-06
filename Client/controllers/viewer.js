@@ -1,5 +1,5 @@
 angular.module("PowerGed")
-    .controller('treeview', function($scope){
+    .controller('viewer', function($scope){
         $scope.treeOptions = {
             nodeChildren: "children",
             dirSelectable: true,
