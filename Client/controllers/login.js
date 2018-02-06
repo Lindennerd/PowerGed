@@ -1,6 +1,6 @@
-angular.module("PowerGed", [])
-    .controller('login', function($scope, $http){
-        $http.post("login").then(function(res){
-            console.log("OK");
-        })
+angular.module("PowerGed")
+    .controller("login", function($window,$scope){
+        $scope.login = function(){
+            $window.location.href = '/';
+        };
 })
