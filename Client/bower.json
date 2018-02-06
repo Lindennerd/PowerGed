@@ -22,7 +22,7 @@
     "angular-route": "^1.6.9",
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
-    "angular-tree-control": "^0.2.28",
+    "angular-trlee-control": "^0.2.28",
     "font-awesome": "^4.7.0"
   }
 }
