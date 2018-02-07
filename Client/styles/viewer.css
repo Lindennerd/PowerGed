@@ -10,10 +10,10 @@
   .side-nav {
     top: 65px;
   }
+}
 
+@media only screen and (max-width : 992px) {
   .content {
     padding-left: 0;
   }
 }
-
- 

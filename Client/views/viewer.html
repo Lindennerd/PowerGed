@@ -8,29 +8,30 @@
                 <a href="#" data-activates="sidebar-left" class="button-collapse">
                     <i class="material-icons">menu</i>
                 </a>
+                <a href="#" data-activates="mobile-search" class="button-collapse right">
+                    <i class="material-icons">search</i>
+                </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <div class="center row">
                             <div class="col s12 ">
                                 <div class="row">
-                                    <form action="#">
-                                        <input name="group1" type="radio" id="test1" />
-                                        <label for="test1" class="white-text">Full Text</label>
-                                    
-                                        <input name="group1" type="radio" id="test2" />
-                                        <label for="test2" class="white-text">Contextual</label>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="center row">
-                            <div class="col s12 ">
-                                <div class="row" id="topbarsearch">
-                                    <div class="input-field col s6 s12">
-                                        <i class="material-icons prefix">search</i>
-                                        <input type="text" placeholder="search">
+                                    <div class="center row">
+                                        <div class="col s6">
+                                            <input name="group1" type="radio" id="test1" />
+                                            <label for="test1" class="white-text">Full Text</label>
+
+                                            <input name="group1" type="radio" id="test2" />
+                                            <label for="test2" class="white-text">Contextual</label>
+                                        </div>
+                                        <div class="col s6 ">
+                                            <div class="row" id="topbarsearch">
+                                                <div class="input-field col s6 s12">
+                                                    <i class="material-icons prefix">search</i>
+                                                    <input type="text" placeholder="search">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -42,38 +43,39 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
         </nav>
     </div>
     <div class="row">
-
-        <div class="col s12 m4 l3">
-            <ul id="sidebar-left" class="side-nav fixed">
-               <li>
-                    <div id="treeview">
-                        <div>
-                            <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
-                                selected-node="node1">
-                                Funcionário: {{node.name}} Idade {{node.age}}
-                            </div>
-                        </div>
+        <div class="col s12">
+            <div class="side-nav" id="mobile-search">
+                <div class="input-field col s12">
+                    <select>
+                        <option value="0" selected>Texto Completo</option>
+                        <option value="1">Contextual</option>
+                    </select>
+                    <label>Tipo de Pesquisa</label>
+                </div>
+            </div>
+            <div id="sidebar-left" class="side-nav fixed">
+                <div id="treeview">
+                    <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
+                        selected-node="node1">
+                        Funcionário: {{node.name}} - Idade {{node.age}}
                     </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col s12 m8 l9">
-            <div id="search-profile" ng-show="advancedOption">
-                <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
                 </div>
-                <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+            </div>
 
-                    <input type="submit" class="btn btn-sm" value="Enviar">
-                </div>
+            <div class="content">
+
+                <div id="search-profile" ng-show="advancedOption">
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Last Name</label>
+
+                        <input type="submit" class="btn btn-sm" value="Enviar">
+                    </div>
                 </div>
 
                 <table class="striped">
@@ -90,9 +92,13 @@
                             <td>Teste</td>
                             <td>07/02/2018</td>
                             <td>07/02/2018</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
+
+
+            </div>
 
         </div>
     </div>
