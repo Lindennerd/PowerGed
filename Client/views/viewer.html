@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="styles/viewer.css">
 
-<div ng-controller="viewer">
+<main ng-controller="viewer">
     <div class="navbar-fixed ">
         <nav>
             <div class="nav-wrapper  light-blue orange darken-1">
@@ -13,52 +13,62 @@
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <div class="center row">
-                            <div class="col s12 ">
-                                <div class="row">
-                                    <div class="center row">
-                                        <div class="col s6">
-                                            <input name="group1" type="radio" id="test1" />
-                                            <label for="test1" class="white-text">Full Text</label>
-
-                                            <input name="group1" type="radio" id="test2" />
-                                            <label for="test2" class="white-text">Contextual</label>
-                                        </div>
-                                        <div class="col s6 ">
-                                            <div class="row" id="topbarsearch">
-                                                <div class="input-field col s6 s12">
-                                                    <i class="material-icons prefix">search</i>
-                                                    <input type="text" placeholder="search">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <li>
+                            <a data-activates="mobile-search" class="button-collapse right show-on-large">
+                                <i class=" material-icons">search</i>
+                            </a>
+                        </li>
                     </li>
                     <li>
-                        <a class="waves-effect waves-light btn-flat dropdown-button" ng-click="showAdvancedOptions()">
-                            <i class="material-icons left">arrow_drop_down_circle</i>
+                        <a>
+                            <i class="material-icons">more_vert</i>
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
     </div>
     <div class="row">
         <div class="col s12">
             <div class="side-nav" id="mobile-search">
-                <div class="input-field col s12">
-                    <select>
-                        <option value="0" selected>Texto Completo</option>
-                        <option value="1">Contextual</option>
-                    </select>
-                    <label>Tipo de Pesquisa</label>
+                <div class="row">
+                    <h5 class="center-align">Pesquisa</h5>
+                    <hr>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">filter_list</i>
+                        <select>
+                            <option value="0" selected>Texto Completo</option>
+                            <option value="1">Contextual</option>
+                        </select>
+                        <label>Tipo de Pesquisa</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text">
+                        <label>Pesquisa</label>
+                    </div>
+                    <ul class="collapsible col s12" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">
+                                <i class="material-icons">menu</i>Avançado</div>
+                            <div class="collapsible-body">
+                                <input type="text" placeholder="Nome">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="col s12">
+                        <button class="btn btn-sm right">Pesquisar</button>
+                    </div>
+                </div>
+
             </div>
             <div id="sidebar-left" class="side-nav fixed">
+                <div class="row">
+                    <h5 class="center-align">Bases</h5>
+                    <hr>
+                </div>
                 <div id="treeview">
                     <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
                         selected-node="node1">
@@ -68,16 +78,6 @@
             </div>
 
             <div class="content">
-
-                <div id="search-profile" ng-show="advancedOption">
-                    <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
-
-                        <input type="submit" class="btn btn-sm" value="Enviar">
-                    </div>
-                </div>
-
                 <table class="striped">
                     <thead>
                         <tr>
@@ -96,10 +96,7 @@
                         </tr>
                     </tbody>
                 </table>
-
-
             </div>
-
         </div>
     </div>
-</div>
+</main>

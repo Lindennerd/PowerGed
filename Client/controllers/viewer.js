@@ -7,9 +7,10 @@ angular.module("PowerGed")
 
 
         $('.button-collapse').sideNav( {draggable: true} );
-        $('.button-collapse.right').sideNav({edge: 'right', draggable: true, menuWidth: 500});
+        $('.button-collapse.right').sideNav({edge: 'right', draggable: true});
         $('.dropdown-button').dropdown();
         $('select').material_select();
+        $('.collapsible').collapsible();
 
         $scope.treeOptions = {
             nodeChildren: "children",
