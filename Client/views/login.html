@@ -1,19 +1,18 @@
 <div class="container">
     <div class="row ">
-      
-        <div class="col-md-3  login-area element-center">
+        <div class="col-md-4 col-10 border border-dark rounded login-area">
             <h1 class="text-center">PowerGED</h1>
             <form ng-controller="login">
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="email" class="form-control" id="name">
+                    <input type="email" class="form-control" ng-model="name" id="name">
                 </div>
                 <div class="form-group">
                     <label>Senha:</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control" ng-model="password" id="password">
                 </div>
                 <div class="form-group">
-                    <button class="form-control btn btn-primary d-flex justify-content-center" ng-click="login()" id="btn-login" type="submit">Login</button>
+                    <button class="form-control btn btn-primary d-flex justify-content-center" ng-click="loginClick()" id="btn-login" type="submit">Entrar</button>
                 </div>
             </form>
         </div>
