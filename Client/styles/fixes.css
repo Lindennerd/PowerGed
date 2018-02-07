@@ -2,12 +2,16 @@
     margin-top: 15%;
 }
 
-@media (min-width: 994px) {
+/* @media (min-width: 994px) {
     .element-center {
         margin: 0%;
         margin-left: 15%;
         margin-top: 15%;
+        
+    }
+
+    .border {
         border: 1px black solid;
         border-radius: 10px;
     }
-}
+} */
