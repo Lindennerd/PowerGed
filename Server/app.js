@@ -1,12 +1,14 @@
+var bodyParser = require('body-parser');
 var express = require("express");
 var cors = require('cors');
 
 var app = express();
+app.use(bodyParser.json())
 
 app.use(cors())
 
-app.post('/login', function(req,res){
-    res.send();
+app.post('/login', function(req,res,next){
+    console.log(req.body);
     next();
 });
 
