@@ -6,7 +6,7 @@ angular.module("PowerGed")
 
         $('.button-collapse').sideNav( {draggable: true} );
         $('.button-collapse.side-nav-right').sideNav({edge: 'right'});
-        $('.button-collapse.view').sideNav({edge: 'right', draggable: true, menuWidth: 800});
+        $('[data-activates="file-viewer"]').sideNav({edge: 'right', draggable: true, menuWidth: 800});
 
         $scope.treeOptions = {
             nodeChildren: "children",
