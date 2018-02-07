@@ -3,36 +3,27 @@
 <main ng-controller="viewer">
     <div class="navbar-fixed ">
         <nav>
-            <div class="nav-wrapper  light-blue orange darken-1">
+            <div class="nav-wrapper light-blue orange darken-1">
                 <a href="#!" class="brand-logo">POWER GED</a>
                 <a href="#" data-activates="sidebar-left" class="button-collapse">
                     <i class="material-icons">menu</i>
                 </a>
-                <a href="#" data-activates="mobile-search" class="button-collapse right">
+                <a href="#" data-activates="mobile-search" class="button-collapse side-nav-right right show-on-large">
                     <i class="material-icons">search</i>
                 </a>
-<<<<<<< HEAD
                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <li>
-                            <a data-activates="mobile-search" class="button-collapse right show-on-large">
-                                <i class=" material-icons">search</i>
-                            </a>
-                        </li>
-                    </li>
                     <li>
                         <a>
                             <i class="material-icons">more_vert</i>
                         </a>
                     </li>
                 </ul>
-=======
->>>>>>> 427f4281efa2363f6818a4f35ba2aa5e1b4e61c3
             </div>
         </nav>
     </div>
     <div class="row">
         <div class="col s12">
+
             <div class="side-nav" id="mobile-search">
                 <div class="row">
                     <h5 class="center-align">Pesquisa</h5>
@@ -62,11 +53,12 @@
                         </li>
                     </ul>
                     <div class="col s12">
-                        <button class="btn btn-sm right">Pesquisar</button>
+                        <button class="btn btn-sm">Pesquisar</button>
                     </div>
                 </div>
 
             </div>
+
             <div id="sidebar-left" class="side-nav fixed">
                 <div class="row">
                     <h5 class="center-align">Bases</h5>
@@ -78,6 +70,10 @@
                         Funcionário: {{node.name}} - Idade {{node.age}}
                     </div>
                 </div>
+            </div>
+
+            <div id="file-viewer" class="side-nav">
+
             </div>
 
             <div class="content">
@@ -96,20 +92,14 @@
                             <td>07/02/2018</td>
                             <td>07/02/2018</td>
                             <td>
-                                <a href="#" class=""><i data-activates="sidebar-right"  class="material-icons button-collapse view show-on-large">search</i></a>
+                                <button data-activates="file-viewer" class="button-collapse show-on-large side-nav-right btn btn-sm">
+                                    <i class="material-icons">visibility</i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-<<<<<<< HEAD
-=======
-            <div id="sidebar-right" class="side-nav viewer" id="">
-                <div>
-                    
-                </div>
-            </div>
->>>>>>> 427f4281efa2363f6818a4f35ba2aa5e1b4e61c3
         </div>
     </div>
 </main>
