@@ -1,5 +1,14 @@
 angular.module("PowerGed")
     .controller('viewer', function($scope){
+        $scope.advancedOption = false;
+        $scope.showAdvancedOptions = function() { 
+            $scope.advancedOption = !$scope.advancedOption; 
+        }
+
+
+        $('.button-collapse').sideNav();
+        $('.dropdown-button').dropdown();
+
         $scope.treeOptions = {
             nodeChildren: "children",
             dirSelectable: true,
