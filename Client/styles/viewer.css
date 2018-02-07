@@ -4,7 +4,7 @@
 
 @media only screen and (min-width : 992px) {
   .side-nav {
-    top: 65px;
+    top: 65px; 
   }
 }
 
@@ -12,4 +12,8 @@
   .content {
     padding-left: 0;
   }
+  #sidebar-right{
+    width: 300px!important;
+  }
 }
+

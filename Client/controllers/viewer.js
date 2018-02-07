@@ -7,7 +7,12 @@ angular.module("PowerGed")
 
 
         $('.button-collapse').sideNav( {draggable: true} );
+<<<<<<< HEAD
         $('.button-collapse.right').sideNav({edge: 'right', draggable: true});
+=======
+        $('.button-collapse.right').sideNav({edge: 'right', draggable: true, menuWidth: 500});
+        $('.button-collapse.view').sideNav({edge: 'right', draggable: true, menuWidth: 800});
+>>>>>>> 427f4281efa2363f6818a4f35ba2aa5e1b4e61c3
         $('.dropdown-button').dropdown();
         $('select').material_select();
         $('.collapsible').collapsible();
