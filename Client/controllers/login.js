@@ -1,13 +1,14 @@
 angular.module("PowerGed")
-    .controller("login", function ($scope, $http) {
+    .controller("login", function ($scope, $http, $window) {
         $scope.loginClick = function () {
-            $http.post('http://localhost:6969/login', function () {
-                var data = {
-                    name: $scope.name,
-                    password: $scope.password
-                };
-                
-                // $window.location.href = '/';
-            });
+            var data = {
+                name: $scope.name,
+                password: $scope.password
+            };
+            $http.post('http://localhost:6969/login', data)
+                .then(function(response){
+                    console.log(response);
+                    $window.location = '/';
+                })
         }
     });
