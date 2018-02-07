@@ -11,39 +11,6 @@
                 <a href="#" data-activates="mobile-search" class="button-collapse right">
                     <i class="material-icons">search</i>
                 </a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <div class="center row">
-                            <div class="col s12 ">
-                                <div class="row">
-                                    <div class="center row">
-                                        <div class="col s6">
-                                            <input name="group1" type="radio" id="test1" />
-                                            <label for="test1" class="white-text">Full Text</label>
-
-                                            <input name="group1" type="radio" id="test2" />
-                                            <label for="test2" class="white-text">Contextual</label>
-                                        </div>
-                                        <div class="col s6 ">
-                                            <div class="row" id="topbarsearch">
-                                                <div class="input-field col s6 s12">
-                                                    <i class="material-icons prefix">search</i>
-                                                    <input type="text" placeholder="search">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="waves-effect waves-light btn-flat dropdown-button" ng-click="showAdvancedOptions()">
-                            <i class="material-icons left">arrow_drop_down_circle</i>
-                        </a>
-                    </li>
-                </ul>
-
             </div>
         </nav>
     </div>
@@ -84,7 +51,7 @@
                             <th>Nome</th>
                             <th>Data de Criação</th>
                             <th>Data de Modificação</th>
-                            <th></th>
+                            <th>Visualizador</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,14 +59,18 @@
                             <td>Teste</td>
                             <td>07/02/2018</td>
                             <td>07/02/2018</td>
-                            <td></td>
+                            <td>
+                                <a href="#" class=""><i data-activates="sidebar-right"  class="material-icons button-collapse view show-on-large">search</i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
-
             </div>
-
+            <div id="sidebar-right" class="side-nav viewer" id="">
+                <div>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ angular.module("PowerGed")
 
         $('.button-collapse').sideNav( {draggable: true} );
         $('.button-collapse.right').sideNav({edge: 'right', draggable: true, menuWidth: 500});
+        $('.button-collapse.view').sideNav({edge: 'right', draggable: true, menuWidth: 800});
         $('.dropdown-button').dropdown();
         $('select').material_select();
 
