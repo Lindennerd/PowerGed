@@ -14,10 +14,10 @@
                             <div class="col s12 ">
                                 <div class="row">
                                     <form action="#">
-                                        <input name="group1" type="radio" checked />
+                                        <input name="group1" type="radio" id="test1" />
                                         <label for="test1" class="white-text">Full Text</label>
-
-                                        <input name="group1" type="radio" />
+                                    
+                                        <input name="group1" type="radio" id="test2" />
                                         <label for="test2" class="white-text">Contextual</label>
                                     </form>
                                 </div>
@@ -64,20 +64,35 @@
 
         <div class="col s12 m8 l9">
             <div id="search-profile" ng-show="advancedOption">
-                <form action="" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <input type="submit" class="btn" value="Enviar">
-                </form>
-            </div>
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+
+                    <input type="submit" class="btn btn-sm" value="Enviar">
+                </div>
+                </div>
+
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de Criação</th>
+                            <th>Data de Modificação</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Teste</td>
+                            <td>07/02/2018</td>
+                            <td>07/02/2018</td>
+                        </tr>
+                    </tbody>
+                </table>
 
         </div>
     </div>

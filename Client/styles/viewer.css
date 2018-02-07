@@ -1,9 +1,19 @@
+#treeview {
+  padding-top: 2em;
+}
+
+.content {
+  padding-left: 300px;
+}
+
 @media only screen and (min-width : 992px) {
   .side-nav {
     top: 65px;
   }
+
+  .content {
+    padding-left: 0;
+  }
 }
 
-#treeview {
-  padding-top: 2em;
-}
+ 
