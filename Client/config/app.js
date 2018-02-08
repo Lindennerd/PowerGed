@@ -1,4 +1,4 @@
-var app = angular.module("PowerGed", ["ngRoute", "treeControl"]);
+var app = angular.module("PowerGed", ["ngRoute", "treeControl", "ngMaterial"]);
 
 app.config(function($routeProvider){
     $routeProvider.when('/', {
@@ -8,3 +8,13 @@ app.config(function($routeProvider){
         templateUrl:"/views/login.html",
     });
 });
+
+/* GLOBAL VARS */
+
+config = (function(){
+    return {
+        urls : {
+            base: 'http://localhost:6969'
+        }
+    }
+})();
