@@ -44,3 +44,8 @@ body {
   margin-left: 302px!important;
   width: calc(100% - 302px)!important;
 }
+
+.tree-classic > ul > li > i.tree-branch-head {
+  background: url(../image/database.png) no-repeat !important;
+  
+}

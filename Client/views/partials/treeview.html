@@ -1,0 +1,20 @@
+<div ng-controller="treeview">
+    <div class="row">
+        <h5 class="center-align">Bases</h5>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input type="text">
+            <label>Pesquisa</label>
+        </div>
+    </div>
+
+    <div id="treeview">
+        <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
+            selected-node="node1">
+
+            Funcionário: {{node.name}} - Idade {{node.age}}
+        </div>
+    </div>
+</div>

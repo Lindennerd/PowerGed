@@ -57,28 +57,10 @@
                     </div>
                 </div>
             </div>
-
-            <div id="sidebar-left" class="side-nav fixed" ng-controller="treeview">
-                <div class="row">
-                    <h5 class="center-align">Bases</h5>
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <select class="browser-default" ng-model="selectedBaseID" ng-change="updateTreeView()">
-                            <option value="{{base.id}}" ng-repeat="base in basesName">{{base.name}}</option>
-                            <option value="" disabled selected>Selecione uma base</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div id="treeview">
-                    <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
-                        selected-node="node1">
-                        Funcionário: {{node.name}} - Idade {{node.age}}
-                    </div>
-                </div>
+            <div id="sidebar-left" class="side-nav fixed">
+                <ng-include src="'views/partials/treeview.html'"></ng-include>
             </div>
+
 
             <div id="file-viewer" class="side-nav">
                 <div class="row">
@@ -102,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="content">
+        <div class="content" ng-controller="container">
             <table class="striped">
                 <thead>
                     <tr>
