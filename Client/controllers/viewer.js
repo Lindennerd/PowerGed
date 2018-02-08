@@ -11,16 +11,10 @@ angular.module("PowerGed")
         
     });
 
-angular.module("PowerGed").filter('getBasesName', function(){
-    return function(base){
-        return {name: base.name, id: base.id};
-    }
-})
-
 angular.module("PowerGed").controller('treeview', function($scope, $http){
 
     $scope.treeOptions = {
-        nodeChildren: "children",
+        nodeChildren: "files",
         dirSelectable: false,
         injectClasses: {
             ul: "a1",
@@ -33,14 +27,23 @@ angular.module("PowerGed").controller('treeview', function($scope, $http){
             labelSelected: "a8"
         }
     }
-  
 
-    //$scope.dataForTheTree = response.data;
+    $scope.updateTreeView = function() {
+        $scope.dataForTheTree = $scope.bases.filter(function(base, index){
+            if(base.id == $scope.selectedBaseID) {
+                return base;
+            }
+        });
+        console.log($scope.dataForTheTree[0].description);
+        $scope.baseMetaData = $scope.dataForTheTree[0].description;
+    }
 
     $http.get(config.urls.base + '/bases').then(function(response) {
         $scope.bases = response.data;
         $scope.basesName = response.data.map(function(element, index) {
             return {name: element.name, id: element.id};
         });
+
+        
     })
 });
