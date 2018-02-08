@@ -7,6 +7,8 @@ app.use(bodyParser.json())
 
 app.use(cors())
 
+app.use('/client', express.static('../Client'));
+
 app.post('/login', function(req,res,next){
     console.log(req.body);
     next();
