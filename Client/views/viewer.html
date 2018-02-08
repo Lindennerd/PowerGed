@@ -73,21 +73,40 @@
             </div>
 
             <div id="file-viewer" class="side-nav">
-
+                <div class="row">
+                    <a class="close-view">
+                        <i class="material-icons black-text small">close</i>
+                    </a>
+                    <h5 class="center-align"> Visualizador</h5>
+                    <hr>
+                </div>
+                <div class="row col s12 l12 m12">
+                </div>
+                <div class="row">
+                    <div class="col s12 l12 m12">
+                        <!-- <iframe src= "image/fatura.pdf" width="100%" height="500px" ></iframe> -->
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="image/power_filial.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="content">
-                <table class="striped">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Data de Criação</th>
-                            <th>Data de Modificação</th>
-                            <th>Visualizador</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+        </div>
+        <div class="content">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Criação</th>
+                        <th>Data de Modificação</th>
+                        <th>Visualizador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class=" modal-trigger" href="#fields">
+                        <a data-activates="slide-out">
                             <td>Teste</td>
                             <td>07/02/2018</td>
                             <td>07/02/2018</td>
@@ -96,8 +115,14 @@
                                     <i class="material-icons">visibility</i>
                                 </button>
                             </td>
-                        </tr>
-                        <!-- <tr>
+                        </a>
+                    </tr>
+
+
+
+
+
+                    <!-- <tr>
                             <td>Teste</td>
                             <td>07/02/2018</td>
                             <td>07/02/2018</td>
@@ -387,12 +412,46 @@
                                 </button>
                             </td>
                         </tr> -->
-                    </tbody>
-                </table>
-                <div class="bottom-panel">
-                    teste
+                </tbody>
+            </table>
+            <div id="fields" class="modal bottom-sheet modal-fields">
+                    
+                <div class="modal-content ">
+                        <a href="#" class="modal-action modal-close">
+                                <i class="material-icons black-text small">close</i>
+                            </a>
+                    <div class="row">
+                        <h4>Campos Indexados</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">
+                            <p>
+                                <span class="field-name">Empresa:</span> Power Imaging</p>
+                            <p>
+                                <span class="field-name">Endereço:</span> Carlos Von Koseritsky, 456</p>
+                        </div>
+                        <div class="col s3">
+                            <p>
+                                <span class="field-name">Empresa:</span> Power Imaging</p>
+                            <p>
+                                <span class="field-name">Endereço:</span> Carlos Von Koseritsky, 456</p>
+                        </div>
+                        <div class="col s3">
+                            <p>
+                                <span class="field-name">Empresa:</span> Power Imaging</p>
+                            <p>
+                                <span class="field-name">Endereço:</span> Carlos Von Koseritsky, 456</p>
+                        </div>
+                        <div class="col s3">
+                            <p>
+                                <span class="field-name">Empresa:</span> Power Imaging</p>
+                            <p>
+                                <span class="field-name">Endereço:</span> Carlos Von Koseritsky, 456</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

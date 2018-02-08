@@ -18,6 +18,7 @@ body {
   .side-nav {
     top: 65px; 
   }
+  
 }
 
 @media only screen and (max-width : 992px) {
@@ -27,4 +28,19 @@ body {
   #file-viewer{
     width: 300px!important;
   }
+  
+}
+
+.close-view {
+  position: absolute;
+  cursor: pointer;
+}
+
+.field-name {
+  font-weight: bold;
+}
+
+.modal-fields {
+  margin-left: 302px!important;
+  width: calc(100% - 302px)!important;
 }
