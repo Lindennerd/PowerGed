@@ -8,6 +8,7 @@ var bases = require('./bases.json');
 var app = express();
 app.use(bodyParser.json())
 
+
 app.use(cors())
 
 app.use('/client', express.static('../Client'));

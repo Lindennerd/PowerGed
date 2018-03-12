@@ -3,11 +3,11 @@ angular.module("PowerGed").factory('detailsListService', function($rootScope){
     sharedService.list = {};
 
     sharedService.setList = function(items) {
-        this.sharedService.list = items;
+        this.list = items;
         this.publish();
     }
 
-    this.publish = function() {
+    sharedService.publish = function() {
         $rootScope.$broadcast('handlePublish')
     }
 
