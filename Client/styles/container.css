@@ -1,0 +1,80 @@
+.flex-item{
+    float: left;
+    width: 50%;
+}
+
+
+    .flex-icon:hover {
+        background-color: lightgrey;
+        cursor: pointer;
+    }
+  
+.full-width {
+width: 100%;
+}
+
+.content {
+padding-left: 290px;
+}
+
+.clickable-icon {
+background-position: center !important; 
+padding: 8px;
+}
+
+    .clickable-icon.folder-closed {
+        background: url(../image/folder-closed.png) no-repeat;
+    }
+
+    .clickable-icon.file-icon {
+        background: url(../image/file.png) no-repeat;
+    }
+
+.materialboxed {
+    width: 38em;
+}
+
+#info-fields tbody td:nth-child(odd) {
+    font-weight: 600;
+}
+
+.dock {
+    position: fixed;
+    right: 0;
+    padding: 10px;
+    background-color: white;
+    border-left: solid 1px #eee;
+    box-shadow: #888888 1px 0px 8px 1px;
+    height: calc(100% + 60px);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  
+   .dock .dock-toolbar {
+      padding: 0.6em;
+      border-bottom: 1px solid;
+    }
+
+    .dock .btn {
+        padding: 0 0.3rem;
+    }
+  
+
+@media only screen and (max-width : 992px) {
+    .content {
+      padding-left: 0;
+    }
+    .dock.expanded{
+      width: 85% !important;
+      overflow: scroll;
+    }
+    .materialboxed {
+      width: 28em;
+    }
+    
+    .flex-item{
+      float: left;
+      width: 100%;
+    }
+  
+}

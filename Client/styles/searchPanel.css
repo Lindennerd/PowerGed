@@ -1,0 +1,20 @@
+#searchPanel {
+    margin-left: 290px;
+    position: fixed;
+    bottom: -20px;
+    width: calc(100% - 290px);
+    height: 50%;
+    padding: 10px;
+    border-top: solid 1px #eee;
+    box-shadow: #888888 3px 1px 6px 0px;
+    background: white;
+    overflow: scroll;
+}
+
+@media (max-width: 768px) {
+    #searchPanel {
+        padding: initial;
+        margin-left: -11px;
+        width: 100%;
+    }
+}

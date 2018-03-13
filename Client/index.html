@@ -1,53 +1,62 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
-      
+<head>
 
-    <!-- General -->
-    <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control.css">
-    <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control-attribute.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" media="screen,projection"
+  />
 
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <!-- General -->
+  <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control.css">
+  <link rel="stylesheet" href="bower_components/angular-tree-control/css/tree-control-attribute.css">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/fixes.css" />
-    
-  </head>
-  <body ng-app="PowerGed">
 
-    <ng-view></ng-view>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <link rel="stylesheet" href="styles/viewer.css">
+  <link rel="stylesheet" href="styles/container.css">
+  <link rel="stylesheet" href="styles/searchPanel.css">
+  <link rel="stylesheet" href="styles/treeview.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/fixes.css" />
 
-    <script src="config/app.js"></script>
+</head>
 
-    <script src="bower_components/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
-    
-    <script type="text/javascript" src="bower_components/angular-tree-control/angular-tree-control.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>    
-    
+<body ng-app="PowerGed">
 
-    <!-- Services & Factories  -->
-    <script src="services/syncContainer.js"></script>
-    <script src="services/syncTreeView.js"></script>
+  <ng-view></ng-view>
 
-    <!-- Controllers -->
-    <script src="controllers/viewer.js"></script>
-    <script src="controllers/treeview.js"></script>
-    <script src="controllers/container.js"></script>
-    <script src="controllers/searchPanel.js"></script>
-    <script src="controllers/login.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-  </body>
+  <script src="config/app.js"></script>
+
+  <script src="bower_components/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+
+  <script type="text/javascript" src="bower_components/angular-tree-control/angular-tree-control.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+
+
+  <!-- Services & Factories  -->
+  <script src="services/syncContainer.js"></script>
+  <script src="services/syncTreeView.js"></script>
+  <script src="services/syncSearchPanel.js"></script>
+
+  <!-- Controllers -->
+  <script src="controllers/viewer.js"></script>
+  <script src="controllers/treeview.js"></script>
+  <script src="controllers/container.js"></script>
+  <script src="controllers/searchPanel.js"></script>
+  <script src="controllers/login.js"></script>
+
+</body>
+
 </html>
