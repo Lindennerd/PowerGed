@@ -1,70 +1,27 @@
 <link rel="stylesheet" href="styles/viewer.css">
 
 <div ng-controller="viewer">
-    <div class="navbar-fixed ">
+    <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper light-blue orange darken-1">
                 <a href="#!" class="brand-logo">POWER GED</a>
                 <a href="#" data-activates="sidebar-left" class="button-collapse">
                     <i class="material-icons">menu</i>
                 </a>
-                <a href="#" data-activates="mobile-search" class="button-collapse side-nav-right right show-on-large">
+                <a href="" class="right show-on-large" ng-click="toggleSearchPanel()">
                     <i class="material-icons">search</i>
                 </a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a>
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </nav>
     </div>
     <div class="row">
         <div class="col s12">
 
-            <div class="side-nav" id="mobile-search">
-                <div class="row">
-                    <h5 class="center-align">Pesquisa</h5>
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">filter_list</i>
-                        <select>
-                            <option value="0" selected>Texto Completo</option>
-                            <option value="1">Contextual</option>
-                        </select>
-                        <label>Tipo de Pesquisa</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">search</i>
-                        <input type="text">
-                        <label>Pesquisa</label>
-                    </div>
-                    <ul class="collapsible col s12" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="material-icons">menu</i>Avançado</div>
-                            <div class="collapsible-body">
-                                <input type="text" placeholder="Nome">
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="col s12">
-                        <button class="btn btn-sm">Pesquisar</button>
-                    </div>
-                </div>
-            </div>
             <div id="sidebar-left" class="side-nav fixed">
                 <ng-include src="'views/partials/treeview.html'"></ng-include>
             </div>
-
-
             <ng-include src="'views/partials/container.html'"></ng-include>
-            <div id="fields" class="modal bottom-sheet modal-fields">
-            </div>
+            <ng-include src="'views/partials/searchPanel.html'"></ng-include>
         </div>
     </div>
 </div>

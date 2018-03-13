@@ -1,5 +1,5 @@
 angular.module("PowerGed")
-    .controller('viewer', function($scope){
+    .controller('viewer', function($scope, syncSearchPanel){
         $('.dropdown-button').dropdown();
         $('.modal').modal({dismissible: false,opacity: 0, startingTop: '4%',endingTop: '10%',});
         $('select').material_select();
@@ -7,7 +7,19 @@ angular.module("PowerGed")
         $('close-view').sideNav('hide');
         $('.button-collapse').sideNav( {draggable: false} );
         $('.button-collapse.side-nav-right').sideNav({edge: 'right'});
-        $('[data-activates="file-viewer"]').sideNav({closeOnClick: true, edge: 'right', draggable: true, menuWidth: 700});
-
+        $('[data-activates="file-viewer"]').sideNav({closeOnClick: true, edge: 'right', draggable: true, menuWidth: 700}); 
         
+        $scope.toggleSearchPanel = function() {
+            syncSearchPanel.toggle();
+        }
     });
+
+angular.module("PowerGed").factory('syncSearchPanel', function($rootScope){
+    var sharedService = {};
+
+    sharedService.toggle = function() {
+        $rootScope.$broadcast('handleSyncSearchPanel')
+    }
+
+    return sharedService;
+});

@@ -4,14 +4,75 @@ body {
   flex-direction: column;
 }
 
-#bottom-panel {
-  border: solid 1px #eee;
-  margin-bottom: 0;
-  margin-top: 80%;
+.flex-item{
+  float: left;
+  width: 50%;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .content {
-  padding-left: 300px;
+  padding-left: 290px;
+}
+
+.clickable-icon {
+  background-position: center !important; 
+  padding: 8px;
+}
+
+  .clickable-icon.folder-closed {
+    background: url(../image/folder-closed.png) no-repeat;
+  }
+
+  .clickable-icon.file-icon {
+    background: url(../image/file.png) no-repeat;
+  }
+
+.tree-classic > ul > li > i.tree-branch-head {
+  background: url(../image/database.png) no-repeat !important;
+  
+}
+
+.flex-icon:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.fix-bottom {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  border-top: solid 1px teal;
+  background-color: white;
+}
+
+.dock {
+  position: fixed;
+  right: 0;
+  padding: 10px;
+  background-color: white;
+  border-left: solid 1px #eee;
+  box-shadow: #888888 1px 0px 8px 1px;
+  height: calc(100% + 60px);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+ .dock .dock-toolbar {
+    padding: 0.6em;
+    border-bottom: 1px solid;
+  }
+
+.materialboxed {
+  width: 38em;
+}
+
+#info-fields tbody td:nth-child(odd) {
+  font-weight: 600;
 }
 
 @media only screen and (min-width : 992px) {
@@ -25,27 +86,16 @@ body {
   .content {
     padding-left: 0;
   }
-  #file-viewer{
-    width: 300px!important;
+  .dock.expanded{
+    width: 28em !important;
+  }
+  .materialboxed {
+    width: 28em;
   }
   
-}
+  .flex-item{
+    float: left;
+    width: 100%;
+  }
 
-.close-view {
-  position: absolute;
-  cursor: pointer;
-}
-
-.field-name {
-  font-weight: bold;
-}
-
-.modal-fields {
-  margin-left: 302px!important;
-  width: calc(100% - 302px)!important;
-}
-
-.tree-classic > ul > li > i.tree-branch-head {
-  background: url(../image/database.png) no-repeat !important;
-  
 }

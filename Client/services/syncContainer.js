@@ -1,4 +1,4 @@
-angular.module("PowerGed").factory('detailsListService', function($rootScope){
+angular.module("PowerGed").factory('syncContainer', function($rootScope){
     var sharedService = {};
     sharedService.list = {};
 
@@ -8,7 +8,7 @@ angular.module("PowerGed").factory('detailsListService', function($rootScope){
     }
 
     sharedService.publish = function() {
-        $rootScope.$broadcast('handlePublish')
+        $rootScope.$broadcast('handleSyncContainer')
     }
 
     return sharedService;

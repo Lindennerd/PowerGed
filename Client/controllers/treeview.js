@@ -1,7 +1,7 @@
-angular.module("PowerGed").controller('treeview', function ($scope, $http, detailsListService) {
+angular.module("PowerGed").controller('treeview', function ($scope, $http, syncContainer, syncTreeView) {
 
     $scope.treeOptions = {
-        nodeChildren: "files",
+        nodeChildren: "items",
         dirSelectable: true,
         injectClasses: {
             ul: "a1",
@@ -15,8 +15,18 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, detai
         }
     };
 
+    $scope.$on('handleSyncTreeView', function(){
+        $scope.expandedNodes.push(syncTreeView.node);
+        $scope.selectedNode = syncTreeView.node;  
+        $scope.showSelected(syncTreeView.node);          
+    })
+
+    $scope.showSearch = function() {
+        $scope.showSearch = true;
+    }
+
     $scope.showSelected = function (node) {
-        detailsListService.setList(node);
+        syncContainer.setList(node);
     }
 
     $http.get(config.urls.base + '/bases').then(function (response) {
@@ -24,7 +34,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, detai
         $scope.basesName = response.data.map(function (element, index) {
             return { name: element.name, id: element.id };
         });
-
-
+        $scope.selectedNode = $scope.dataForTheTree[0];          
+        $scope.showSelected($scope.dataForTheTree[0]);
     })
 });

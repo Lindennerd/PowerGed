@@ -1,16 +1,15 @@
 <div ng-controller="treeview">
     <div class="row">
-        <div class="input-field col s12">
-            <input type="text">
-            <label>Filtrar Bases</label>
+        <div class="col s12">
+            
         </div>
     </div>
-
-    <div id="treeview">
-        <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
-            selected-node="node1">
-
-            Funcionário: {{node.name}} - Idade {{node.age}}
+    <div class="row">
+        <div id="treeview" class="col s12">
+            <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
+                selected-node="selectedNode" expanded-nodes="expandedNodes">
+                {{node.name}}
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,32 @@
+<style>
+    #searchPanel {
+        margin-left: 300px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        background: white;
+        border-top: solid 1px #eee;
+        box-shadow: #888888 3px 1px 6px 0px
+    }
+</style>
+
+<div ng-controller="searchPanel">
+    <div ng-show="visible" id="searchPanel">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">filter_list</i>
+            <select>
+                <option value="0" selected>Texto Completo</option>
+                <option value="1">Contextual</option>
+            </select>
+            <label>Tipo de Pesquisa</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">search</i>
+            <input type="text">
+            <label>Pesquisa</label>
+        </div>
+
+    </div>
+</div>
