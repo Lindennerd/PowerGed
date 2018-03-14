@@ -41,6 +41,7 @@ padding: 8px;
 .dock {
     position: fixed;
     right: 0;
+    top: 64px;
     padding: 10px;
     background-color: white;
     border-left: solid 1px #eee;

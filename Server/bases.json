@@ -17,10 +17,22 @@
                         "name": "Documento de João Carvalho Bragança",
                         "file": "image/id.jpg",
                         "fields": [
-                            {"name": "CPF", "value": "02730867074"},
-                            {"name": "Nome", "value": "João Carvalho Bragança"},
-                            {"name": "Endereço", "value": "Almirante José Barroso, 884"},
-                            {"name": "tipo", "value": "normal"}
+                            {
+                                "name": "CPF",
+                                "value": "02730867074"
+                            },
+                            {
+                                "name": "Nome",
+                                "value": "João Carvalho Bragança"
+                            },
+                            {
+                                "name": "Endereço",
+                                "value": "Almirante José Barroso, 884"
+                            },
+                            {
+                                "name": "tipo",
+                                "value": "normal"
+                            }
                         ]
                     },
                     {
@@ -29,10 +41,22 @@
                         "name": "Documento de Marília Mendonça Leite",
                         "file": "image/id.jpg",
                         "fields": [
-                            {"name": "CPF", "value": "02730867074"},
-                            {"name": "Nome", "value": "Marília Mendonça Leite"},
-                            {"name": "Endereço", "value": "Almirante José Barroso, 884"},
-                            {"name": "tipo", "value": "normal"}
+                            {
+                                "name": "CPF",
+                                "value": "02730867074"
+                            },
+                            {
+                                "name": "Nome",
+                                "value": "Marília Mendonça Leite"
+                            },
+                            {
+                                "name": "Endereço",
+                                "value": "Almirante José Barroso, 884"
+                            },
+                            {
+                                "name": "tipo",
+                                "value": "normal"
+                            }
                         ]
                     },
                     {
@@ -41,10 +65,22 @@
                         "name": "Documento de Renan Tauner Azul",
                         "file": "image/id.jpg",
                         "fields": [
-                            {"name": "CPF", "value": "02730867074"},
-                            {"name": "Nome", "value": "Renan Tauner Azul"},
-                            {"name": "Endereço", "value": "Almirante José Barroso, 884"},
-                            {"name": "tipo", "value": "normal"}
+                            {
+                                "name": "CPF",
+                                "value": "02730867074"
+                            },
+                            {
+                                "name": "Nome",
+                                "value": "Renan Tauner Azul"
+                            },
+                            {
+                                "name": "Endereço",
+                                "value": "Almirante José Barroso, 884"
+                            },
+                            {
+                                "name": "tipo",
+                                "value": "normal"
+                            }
                         ]
                     },
                     {
@@ -53,10 +89,22 @@
                         "name": "Documento de Rogério Caito do Ingá",
                         "file": "image/id.jpg",
                         "fields": [
-                            {"name": "CPF", "value": "02730867074"},
-                            {"name": "Nome", "value": "Rogério Caito do Ingá"},
-                            {"name": "Endereço", "value": "Almirante José Barroso, 884"},
-                            {"name": "tipo", "value": "normal"}
+                            {
+                                "name": "CPF",
+                                "value": "02730867074"
+                            },
+                            {
+                                "name": "Nome",
+                                "value": "Rogério Caito do Ingá"
+                            },
+                            {
+                                "name": "Endereço",
+                                "value": "Almirante José Barroso, 884"
+                            },
+                            {
+                                "name": "tipo",
+                                "value": "normal"
+                            }
                         ]
                     },
                     {

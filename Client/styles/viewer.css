@@ -9,3 +9,9 @@ body {
     top: 65px; 
   } 
 }
+
+@media only screen and (max-width: 320px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
+}

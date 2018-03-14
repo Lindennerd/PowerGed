@@ -1,5 +1,18 @@
 angular.module("PowerGed").controller('container', function($scope, syncContainer, syncTreeView){
-    
+    $('.tooltipped').tooltip({delay: 50});
+
+    $scope.createFolder = function() {
+
+    }
+
+    $scope.addFile = function() {
+        
+    }
+
+    $scope.newBase = function() {
+        
+    }
+
     $scope.hideDock = function() {
         $scope.dockVisible = !$scope.dockVisible;
     }
@@ -13,4 +26,5 @@ angular.module("PowerGed").controller('container', function($scope, syncContaine
         $scope.actionsBar = true;
 
     });
+
 });

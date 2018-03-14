@@ -36,5 +36,6 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
         });
         $scope.selectedNode = $scope.dataForTheTree[0];          
         $scope.showSelected($scope.dataForTheTree[0]);
+        $scope.expandedNodes.push($scope.dataForTheTree[0]);
     })
 });
