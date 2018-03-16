@@ -1,38 +1,36 @@
 <div ng-controller="searchPanel">
     <div ng-show="visible" id="searchPanel">
         <div class="row">
-            <div class="input-field col s12">
-                <select>
-                    <option value="" disabled selected>Escolha um tipo de pesquisa</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
+            <div class="col s12 close">
+                <button class="btn red" ng-click="hidePanel()"> <i class="material-icons">close</i> </button>
             </div>
-
-            <div class="input-field col s12">
-                <select>
-                    <option value="" disabled selected>Escolha uma base</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+            <div class="col s12">
+                <select class="browser-default" ng-model="searchType" ng-change="selectSearchTypeChange()">
+                    <option value="" disabled selected >Escolha um tipo de pesquisa</option>
+                    <option value="0">Por Índice</option>
+                    <option value="1">Textual</option>
                 </select>
             </div>
         </div>
 
         <div class="row">
-            <div class="input-field col s9">
-                <label for="">Pesquisa</label>
-                <input type="text">
+            <div class="col s12" ng-show="searchType == '0'">
+                <div class="input-field col s12" ng-repeat="field in fields">
+                    <label for="">{{field.name}}</label>
+                    <input type="text" name="{{field.name}}">
+                </div>
             </div>
-            <div class="input-field col s3">
-                <input type="button" class="btn" value="Adicionar Campo">
-            </div>
+            <div class="input-field col s12" ng-show="searchType == '1'">
+                    <i class="material-icons prefix">search</i>
+                    <label for="">Pesquisa</label>
+                    <input type="text">
+                </div>
         </div>
         
         <div class="row">
             <div class="input-field col s12">
                 <button class="btn">Pesquisar</button>
+                <button class="btn">Limpar</button>                
             </div>
         </div>
     </div>

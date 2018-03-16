@@ -1,8 +1,8 @@
-angular.module("PowerGed").controller('container', function($scope, syncContainer, syncTreeView){
+angular.module("PowerGed").controller('container', function($scope, syncContainer, syncTreeView, filesService){
     $('.tooltipped').tooltip({delay: 50});
 
     $scope.createFolder = function() {
-
+        filesService.createFolder();
     }
 
     $scope.addFile = function() {

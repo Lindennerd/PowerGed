@@ -1,9 +1,17 @@
+.close {
+    margin-bottom: 10px;
+}
+
+.close > .btn {
+    float: right;
+} 
+
 #searchPanel {
     margin-left: 290px;
     position: fixed;
     bottom: -20px;
     width: calc(100% - 290px);
-    height: 50%;
+    height: 85%;
     padding: 10px;
     border-top: solid 1px #eee;
     box-shadow: #888888 3px 1px 6px 0px;

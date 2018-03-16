@@ -1,4 +1,4 @@
-angular.module("PowerGed").controller('treeview', function ($scope, $http, syncContainer, syncTreeView) {
+angular.module("PowerGed").controller('treeview', function ($scope, $http, syncContainer, syncTreeView, basesService) {
 
     $scope.treeOptions = {
         nodeChildren: "items",
@@ -29,13 +29,22 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
         syncContainer.setList(node);
     }
 
-    $http.get(config.urls.base + '/bases').then(function (response) {
-        $scope.dataForTheTree = response.data;
-        $scope.basesName = response.data.map(function (element, index) {
-            return { name: element.name, id: element.id };
-        });
-        $scope.selectedNode = $scope.dataForTheTree[0];          
-        $scope.showSelected($scope.dataForTheTree[0]);
-        $scope.expandedNodes.push($scope.dataForTheTree[0]);
-    })
+    $scope.chooseDatabase = function() {
+        basesService.getBase($scope.baseName, function(base){
+            $scope.dataForTheTree = base;
+            $scope.basesName = base.map(function (element, index) {
+                return { name: element.name, id: element.id };
+            });
+
+            $scope.selectedNode = $scope.dataForTheTree[0];          
+            $scope.showSelected($scope.dataForTheTree[0]);
+            $scope.expandedNodes.push($scope.dataForTheTree[0]);
+
+            syncTreeView.baseName = $scope.baseName;
+        })
+    }
+
+    basesService.getBases(function(bases) {
+        $scope.bases = bases;
+    });
 });
