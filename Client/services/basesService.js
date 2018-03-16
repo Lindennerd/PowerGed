@@ -1,7 +1,7 @@
 angular.module("PowerGed").factory('basesService', function($http){
     return {
         getBases: function(callback) {
-            $http.get(config.urls.base + '/bases')
+            $http.get(config.urls.base + '/base')
                 .then(function (response) {       
                     callback(response.data);
                 });
@@ -9,7 +9,7 @@ angular.module("PowerGed").factory('basesService', function($http){
 
         getBase: function(baseName, callback) {
             if(baseName) {
-                $http.get(config.urls.base + '/bases/' + baseName)
+                $http.get(config.urls.base + '/baseItems/' + baseName)
                     .then(function(response) {
                         callback(response.data);
                     });

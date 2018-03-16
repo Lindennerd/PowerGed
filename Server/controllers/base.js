@@ -3,9 +3,9 @@ var express = require('express');
 var basesRouter = express.Router();
 
 basesRouter.get('/', function (req, res) {
-    database.connect(function (database, closeClient) {
+    database.connect(function (db, closeClient) {
 
-        var result = database.listCollections()
+        var result = db.listCollections()
         result.toArray().then(function (array) {
             var collections = array
                 .filter(function (collection, index) {
@@ -20,13 +20,21 @@ basesRouter.get('/', function (req, res) {
     })
 })
 
-basesRouter.get('/:baseName', function (req, res) {
-    database.connect(function (database, closeClient) {
-        var collection = database.collection(req.params.baseName);
-        collection.find({}).toArray(function (err, docs) {
-            res.send(docs);           
-        });
-    });
+basesRouter.post('/', function(req, res){
+    database.connect(function(db, closeClient){
+        try {
+            db.createCollection(req.body.baseName);
+            db.createCollection(req.body.baseName + " SCHEMA");
+
+            var schemaCollection = db.collection(req.body.baseName + " SCHEMA");
+            schemaCollection.insert(req.body);
+
+            res.send('collection created');
+        } catch(err) {
+            res.send(err);
+        }
+
+    })
 });
 
 module.exports = basesRouter;
