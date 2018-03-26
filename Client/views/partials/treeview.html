@@ -10,7 +10,7 @@
     <div class="row">
         <div id="treeview" class="col s12">
             <div treecontrol class="tree-classic" tree-model="dataForTheTree" options="treeOptions" on-selection="showSelected(node)"
-                selected-node="selectedNode" expanded-nodes="expandedNodes">
+                selected-node="selectedNode" expanded-nodes="expandedNodes" on-node-toggle="showToggle(node, expanded, $parentNode, $index, $first, $middle, $last, $odd, $even, $path)">
                 {{node.name}}
             </div>
         </div>

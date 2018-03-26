@@ -12,6 +12,9 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
             iLeaf: "a5",
             label: "a6",
             labelSelected: "a8"
+        },
+        isLeaf: function(node) {
+            return node.type == 'item';
         }
     };
 
@@ -38,10 +41,17 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
 
             $scope.selectedNode = $scope.dataForTheTree[0];          
             $scope.showSelected($scope.dataForTheTree[0]);
-            $scope.expandedNodes.push($scope.dataForTheTree[0]);
-
             syncTreeView.baseName = $scope.baseName;
         })
+    }
+
+    $scope.showToggle = function(node, expanded){
+        if(expanded && node.type === 'folder') {
+            var path = node.path == null ? ',' + node.name + ',' : node.path + node.name + ',';
+            basesService.getBase($scope.baseName, path, function(result){
+                node.items = result;
+            });
+        }
     }
 
     basesService.getBases(function(bases) {
