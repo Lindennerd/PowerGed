@@ -1,0 +1,26 @@
+{
+    "createdAt": "22/03/2018",
+    "version": 0,
+    "name": "FUNCIONÁRIO DE TESTE",
+    "file": "",
+    "mimeType": "",
+    "type": "item",
+    "fields": [
+        {
+            "name": "CPF",
+            "value": "11111111111"
+        },
+        {
+            "name": "Nome",
+            "value": "João Carvalho Bragança"
+        },
+        {
+            "name": "Endereço",
+            "value": "Almirante José Barroso, 884"
+        },
+        {
+            "name": "tipo",
+            "value": "normal"
+        }
+    ]
+}

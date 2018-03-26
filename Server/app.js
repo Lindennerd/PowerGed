@@ -19,5 +19,7 @@ app.use('/baseSchema', baseSchema);
 app.use('/baseItems', baseSchema);
 
 app.listen('6969', function() {
-    console.log('coco');
+    console.log('Servindo na porta 6969');
 })
+
+module.exports = app;

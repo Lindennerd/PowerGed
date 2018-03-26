@@ -9,7 +9,7 @@ basesRouter.get('/', function (req, res) {
         result.toArray().then(function (array) {
             var collections = array
                 .filter(function (collection, index) {
-                    return !collection.name.startsWith('system') && !collection.name.endsWith('SCHEMA');
+                    return !collection.name.startsWith('system') && !collection.name.endsWith('SCHEMAS');
                 })
                 .map(function (collection) {
                     return collection.name;
@@ -38,4 +38,3 @@ basesRouter.post('/', function(req, res){
 });
 
 module.exports = basesRouter;
-

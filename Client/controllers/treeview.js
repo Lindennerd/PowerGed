@@ -30,7 +30,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
     }
 
     $scope.chooseDatabase = function() {
-        basesService.getBase($scope.baseName, function(base){
+        basesService.getBase($scope.baseName, null, function(base){
             $scope.dataForTheTree = base;
             $scope.basesName = base.map(function (element, index) {
                 return { name: element.name, id: element.id };

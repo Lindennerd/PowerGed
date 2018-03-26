@@ -1,0 +1,12 @@
+{
+    "baseName": "Funcionarios Pouco Açucar",
+    "parent": "",
+    "item": {
+        "name": "Setor Teste",
+        "id": 1002,
+        "description": "descrição de teste",
+        "createdAt": "22/03/2018",
+        "type": "folder",
+        "items": []
+    }
+}
