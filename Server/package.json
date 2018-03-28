@@ -13,6 +13,8 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "gridfs": "^1.0.0",
+    "mime": "^2.2.0",
     "mongodb": "^3.0.4"
   },
   "devDependencies": {

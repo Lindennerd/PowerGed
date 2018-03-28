@@ -4,7 +4,7 @@ var express = require('express');
 var baseItemsRouter = express.Router();
 
 baseItemsRouter.get('/', function (req, res) {
-    if(!req.query.baseName) {
+    if (!req.query.baseName) {
         res.sendStatus(500);
         return;
     }
@@ -18,16 +18,38 @@ baseItemsRouter.get('/', function (req, res) {
 });
 
 baseItemsRouter.post('/', function (req, res) {
+    function insertItem (collection, item, callback) {
+        collection.insertOne(item).then(function (result) {
+            var insertedId = result.insertedId;
+            callback({ "insertedId": insertedId });
+        });
+    }
+
     database.connect(function (db) {
         var collection = db.collection(req.body.baseName);
         var item = req.body.item;
         item.path = req.body.path;
 
-        collection.insertOne(item).then(function (result) {
-            res.send('Ok');
-        });
-    })
-})
+        if (req.body.file) {
+            if(req.body.file.startsWith('data:')) {
+                req.body.file = req.body.file.replace(/(data:.*base64,)/, '')
+            }
+
+            var fileBinary = new Buffer(req.body.file, 'base64');
+            var fileName = req.body.fileName ? req.body.fileName : 'a-file';
+            database.uploadFile(fileBinary, fileName ,function (file) {
+                item.file = file._id;
+                insertItem(collection, item, function(id) {
+                    res.send(id);
+                });
+            });
+        } else {
+            insertItem(collection, item, function(id) {
+                res.send(id);
+            });
+        }
+    });
+});
 
 baseItemsRouter.put('/', function (req, res) {
     database.connect(function (db) {
@@ -45,7 +67,7 @@ baseItemsRouter.delete('/', function (req, res) {
         if (req.body.isFolder) {
             var regexPattern = ".*," + req.body.folderName + ".*";
             collection.deleteMany({ path: { $regex: regexPattern } }, function (err, deleteManyResult) {
-                if(err) {
+                if (err) {
                     throw err;
                 }
                 collection.remove(req.body.filter, req.body.justOne).then(function (removeResult) {
