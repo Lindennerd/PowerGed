@@ -9,17 +9,24 @@ filesRouter.get('/:id', function (req, res) {
         if (err) {
             res.status(500).send(err);
         } else {
-
-            res.set('Content-Type', mime.getType(file.metadata.filename));
-            res.setHeader('Content-disposition', 'attachment; filename=' + file.metadata.filename);
-
             if (file.fileStream) {
+                res.set('Content-Type', mime.getType(file.metadata.filename));
+                res.setHeader('Content-disposition', 'inline');
+    
                 file.fileStream.pipe(res);
             } else {
-                res.sendStatus(404).send('Documento não encontrado');
+                res.status(404).send('Documento não encontrado');
             }
         }
     });
+});
+
+filesRouter.post('/', function(req, res){
+    console.log(req.files);
+    database.uploadFile(req.files.file.data, req.files.file.name, function(result){
+        console.log(result);
+    })
+    res.send('Ok');
 })
 
 module.exports = filesRouter;

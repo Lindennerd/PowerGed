@@ -1,4 +1,4 @@
-angular.module("PowerGed").controller('treeview', function ($scope, $http, syncContainer, syncTreeView, basesService) {
+angular.module("PowerGed").controller('treeview', function ($scope, $http, syncTreeView, basesService, loadingService) {
 
     $scope.treeOptions = {
         nodeChildren: "items",
@@ -21,7 +21,9 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
     $scope.$on('handleSyncTreeView', function(){
         $scope.expandedNodes.push(syncTreeView.node);
         $scope.selectedNode = syncTreeView.node;  
-        $scope.showSelected(syncTreeView.node);          
+        $scope.showSelected(syncTreeView.node);  
+        
+        $scope.showToggle(syncTreeView.node, true);
     })
 
     $scope.showSearch = function() {
@@ -29,11 +31,12 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
     }
 
     $scope.showSelected = function (node) {
-        syncContainer.setList(node);
+        syncTreeView.updateContainer(node);
     }
 
     $scope.chooseDatabase = function() {
         basesService.getBase($scope.baseName, null, function(base){
+            loadingService.start('treeview-loading');
             $scope.dataForTheTree = base;
             $scope.basesName = base.map(function (element, index) {
                 return { name: element.name, id: element.id };
@@ -42,6 +45,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncC
             $scope.selectedNode = $scope.dataForTheTree[0];          
             $scope.showSelected($scope.dataForTheTree[0]);
             syncTreeView.baseName = $scope.baseName;
+            loadingService.stop('treeview-loading');
         })
     }
 

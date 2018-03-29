@@ -9,7 +9,9 @@ basesRouter.get('/', function (req, res) {
         result.toArray().then(function (array) {
             var collections = array
                 .filter(function (collection, index) {
-                    return !collection.name.startsWith('system') && !collection.name.endsWith('SCHEMAS');
+                    return !collection.name.startsWith('system') 
+                        && !collection.name.endsWith('SCHEMAS')
+                        && !collection.name.startsWith('fs');
                 })
                 .map(function (collection) {
                     return collection.name;

@@ -46,6 +46,8 @@ database.prototype.downloadFile = function (id, callback) {
                         fileStream: bucket.openDownloadStream(obId),
                         metadata: results[0]
                     });
+                } else {
+                    callback({fileStream: null, metadata: null});
                 }
             }).catch((err) => {
                 callback(null, err);

@@ -1,5 +1,5 @@
 <div class="content flex-column" ng-controller="container">
-    <nav id="tools" style="display: none">
+    <!-- <nav id="tools">
         <div class="nav-wrapper teal">
             <ul id="nav-mobile" class="left">
                 <li>
@@ -19,7 +19,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> -->
 
 
     <div ng-if="list.items" class="flex-row">
@@ -34,12 +34,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="item in list.items">
-                    <td ng-if="item.items" class="flex-icon clickable-icon folder-closed" ng-click="expandTree(item)"></td>
-                    <td ng-if="item.fields" class="flex-icon clickable-icon file-icon" ng-click="expandTree(item)"></td>
+                    <td ng-if="item.type == 'folder'" class="flex-icon clickable-icon folder-closed" ng-click="expandTree(item)"></td>
+                    <td ng-if="item.type == 'item'" class="flex-icon clickable-icon file-icon" ng-click="expandTree(item)"></td>
                     <td>{{item.name}}</td>
-                    <td>{{item.createdAt}}</td>
-                    <td ng-if="item.fields">{{item.fields.length}} Campos</td>
-                    <td ng-if="item.items">{{item.items.length}} Arquivos</td>
+                    <td colspan="2">{{item.createdAt}}</td>
+                    <!-- <td ng-if="item.fields">{{item.fields.length}} Campos</td>
+                    <td ng-if="item.items">{{item.items.length}} Arquivos</td> -->
                 </tr>
             </tbody>
         </table>
@@ -74,7 +74,8 @@
                     <i class="material-icons">chevron_right</i>
                 </button>
             </div>
-            <img src="{{list.file}}" alt="" class="materialboxed">
+            <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image">
+            <embed src="{{pdfUrl}}" type="application/pdf" width="800px" height="600px" ng-if="pdf">
         </div>
     </div>
 </div>

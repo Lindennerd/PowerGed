@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var express = require("express");
 var cors = require('cors');
+var fileUpload = require('express-fileupload');
 
 var db = require('./database');
 
@@ -11,11 +12,12 @@ var file = require('./controllers/file');
 
 var app = express();
 
+app.use(fileUpload());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use('/client', express.static('./Client'));
+app.use('/client', express.static('../Client'));
 
 app.use('/file', file);
 app.use('/base', base);

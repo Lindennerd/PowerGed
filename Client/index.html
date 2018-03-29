@@ -25,12 +25,13 @@
   <link rel="stylesheet" href="styles/container.css">
   <link rel="stylesheet" href="styles/searchPanel.css">
   <link rel="stylesheet" href="styles/treeview.css">
+  <link rel="stylesheet" href="styles/loading.css">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/fixes.css" />
 
 </head>
 
 <body ng-app="PowerGed">
-
+ 
   <ng-view></ng-view>
 
   <!-- Optional JavaScript -->
@@ -45,8 +46,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
 
   <!-- Services & Factories  -->
-  <script src="services/syncContainer.js"></script>
   <script src="services/syncTreeView.js"></script>
+  <script src="services/loadingService.js"></script>
   <script src="services/syncSearchPanel.js"></script>
   <script src="services/basesService.js"></script>
   <script src="services/filesService.js"></script>

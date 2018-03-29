@@ -7,11 +7,19 @@ angular.module("PowerGed").factory('syncTreeView', function($rootScope){
         this.node = node;
         this.publish();
     }
-    
+
+    sharedService.updateContainer = function(node) {
+        this.node = node;
+        this.publishContainer();
+    }
+
     sharedService.publish = function() {
         $rootScope.$broadcast('handleSyncTreeView')
     }
 
-    return sharedService;
+    sharedService.publishContainer = function() {
+        $rootScope.$broadcast('handleSyncContainer')
+    }
 
+    return sharedService;
 });
