@@ -12,8 +12,6 @@ angular.module("PowerGed").controller('container', function ($scope, $http, sync
     // }
 
     $scope.hideDock = function () {
-        loadingService.start();
-
         $scope.dockVisible = !$scope.dockVisible;
         if ($scope.dockVisible) {
             //TODO Provavelmente vai virar outro controller isso
@@ -24,7 +22,7 @@ angular.module("PowerGed").controller('container', function ($scope, $http, sync
                     $scope.pdf = true;
                     $scope.pdfUrl = url;
                 }
-            })
+            });
         }
     }
 

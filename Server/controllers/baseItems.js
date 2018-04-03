@@ -11,9 +11,17 @@ baseItemsRouter.get('/', function (req, res) {
     database.connect(function (db, closeClient) {
         var collection = db.collection(req.query.baseName.toString());
         var filterJson = JSON.parse(req.query.filter);
-        collection.find(filterJson).toArray(function (err, docs) {
-            res.send(docs);
-        });
+
+        if(req.query.projection) {
+            var projection = JSON.parse(req.query.projection);
+            collection.find(filterJson, projection).toArray(function (err, docs) {
+                res.send(docs);
+            });
+        } else {
+            collection.find(filterJson).toArray(function (err, docs) {
+                res.send(docs);
+            });
+        }
     });
 });
 

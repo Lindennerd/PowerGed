@@ -24,7 +24,11 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncT
         $scope.showSelected(syncTreeView.node);  
         
         $scope.showToggle(syncTreeView.node, true);
-    })
+    });
+
+    $scope.$on('handleSearchResult', function() {
+        $scope.dataForTheTree = syncTreeView.node;
+    });
 
     $scope.showSearch = function() {
         $scope.showSearch = true;
@@ -35,8 +39,8 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncT
     }
 
     $scope.chooseDatabase = function() {
+        
         basesService.getBase($scope.baseName, null, function(base){
-            loadingService.start('treeview-loading');
             $scope.dataForTheTree = base;
             $scope.basesName = base.map(function (element, index) {
                 return { name: element.name, id: element.id };
@@ -45,8 +49,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncT
             $scope.selectedNode = $scope.dataForTheTree[0];          
             $scope.showSelected($scope.dataForTheTree[0]);
             syncTreeView.baseName = $scope.baseName;
-            loadingService.stop('treeview-loading');
-        })
+        });
     }
 
     $scope.showToggle = function(node, expanded){

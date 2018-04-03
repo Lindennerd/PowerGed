@@ -1,11 +1,3 @@
-.close {
-    margin-bottom: 10px;
-}
-
-.close > .btn {
-    float: right;
-} 
-
 #searchPanel {
     margin-left: 290px;
     position: fixed;
@@ -16,7 +8,33 @@
     border-top: solid 1px #eee;
     box-shadow: #888888 3px 1px 6px 0px;
     background: white;
+    display: flex;
+    flex-direction: column; 
+}
+
+.head {
+    top: 0;
+}
+
+    .head .close {
+        float: right;
+        margin-right: 15px;
+    }
+
+    .head select {
+        width: 60vw;
+        float: left;
+    }
+
+.footer {
+    bottom: 3vh;
+    position: fixed;
+}
+
+.body {
     overflow: scroll;
+    min-height: 65vh;
+    max-height: 65vh;
 }
 
 @media (max-width: 768px) {

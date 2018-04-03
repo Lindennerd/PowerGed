@@ -13,12 +13,21 @@ angular.module("PowerGed").factory('syncTreeView', function($rootScope){
         this.publishContainer();
     }
 
+    sharedService.updateTreeSearchResult = function(result) {
+        this.node = result;
+        this.publishSearchEvent();
+    }
+
     sharedService.publish = function() {
-        $rootScope.$broadcast('handleSyncTreeView')
+        $rootScope.$broadcast('handleSyncTreeView');
     }
 
     sharedService.publishContainer = function() {
-        $rootScope.$broadcast('handleSyncContainer')
+        $rootScope.$broadcast('handleSyncContainer');
+    }
+
+    sharedService.publishSearchEvent = function() {
+        $rootScope.$broadcast('handleSearchResult');
     }
 
     return sharedService;

@@ -1,38 +1,38 @@
 <div ng-controller="searchPanel">
     <div ng-show="visible" id="searchPanel">
-        <div class="row">
-            <div class="col s12 close">
-                <button class="btn red" ng-click="hidePanel()"> <i class="material-icons">close</i> </button>
-            </div>
-            <div class="col s12">
-                <select class="browser-default" ng-model="searchType" ng-change="selectSearchTypeChange()">
-                    <option value="" disabled selected >Escolha um tipo de pesquisa</option>
-                    <option value="0">Por Índice</option>
-                    <option value="1">Textual</option>
-                </select>
-            </div>
+        <div class="head">
+            <button class="btn red close" ng-click="hidePanel()">
+                <i class="material-icons">close</i>
+            </button>
+            <select class="browser-default" ng-model="searchType" ng-change="selectSearchTypeChange()">
+                <option value="" disabled selected>Escolha um tipo de pesquisa</option>
+                <option value="0">Por Índice</option>
+                <option value="1">Textual</option>
+            </select>
         </div>
-
-        <div class="row">
+        <div class="body">
             <div class="col s12" ng-show="searchType == '0'">
-                <div class="input-field col s12" ng-repeat="field in fields">
-                    <label for="">{{field.name}}</label>
-                    <input type="text" name="{{field.name}}">
+                <p>Caso deseje adicionar mais de um valor por campo, separe cada um utilizando um "e comercial" (&)</p>
+                <div ng-repeat="field in fields" class="row">
+                    <div class="input-field col s12">
+                        <label for="">{{field}}</label>
+                        <input type="text" class="searchInput" name="{{field}}">
+                    </div>
                 </div>
             </div>
             <div class="input-field col s12" ng-show="searchType == '1'">
-                    <i class="material-icons prefix">search</i>
-                    <label for="">Pesquisa</label>
-                    <input type="text">
-                </div>
+                <i class="material-icons prefix">search</i>
+                <label for="">Pesquisa</label>
+                <input type="text">
+            </div>
+
         </div>
-        
-        <div class="row">
-            <div class="input-field col s12">
-                <button class="btn">Pesquisar</button>
-                <button class="btn">Limpar</button>                
+        <div class="footer">
+            <div class="action-buttons">
+                <button class="btn" ng-click="search()">Pesquisar</button>
+                <button class="btn" ng-click="clear();">Limpar</button>
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
