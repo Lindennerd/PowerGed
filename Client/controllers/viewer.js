@@ -6,8 +6,6 @@ angular.module("PowerGed")
         $('.collapsible').collapsible();
         $('close-view').sideNav('hide');
         $('.button-collapse').sideNav({ draggable: false });
-        $('.button-collapse.side-nav-right').sideNav({ edge: 'right' });
-        $('[data-activates="file-viewer"]').sideNav({ closeOnClick: true, edge: 'right', draggable: true, menuWidth: 700 });
 
         $scope.toggleSearchPanel = function () {
             if (!syncTreeView.baseName) {

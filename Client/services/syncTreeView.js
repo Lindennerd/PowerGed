@@ -18,6 +18,11 @@ angular.module("PowerGed").factory('syncTreeView', function($rootScope){
         this.publishSearchEvent();
     }
 
+    sharedService.toggleTreeView = function(dockVisible) {
+        this.toggleTreeViewFlag =  !dockVisible;
+        $rootScope.$broadcast('handleSyncToggleTreeview')
+    }
+
     sharedService.publish = function() {
         $rootScope.$broadcast('handleSyncTreeView');
     }

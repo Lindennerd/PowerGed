@@ -1,6 +1,8 @@
 angular.module("PowerGed").controller('container', function ($scope, $http, syncTreeView, filesService, loadingService) {
     $('.tooltipped').tooltip({ delay: 50 });
 
+    $scope.adjustPaddingLeft = 'content';
+
     // $scope.createFolder = function() {
     //     filesService.createFolder();
     // }
@@ -13,6 +15,10 @@ angular.module("PowerGed").controller('container', function ($scope, $http, sync
 
     $scope.hideDock = function () {
         $scope.dockVisible = !$scope.dockVisible;
+        syncTreeView.toggleTreeView($scope.dockVisible);
+
+        $scope.adjustPaddingLeft = $scope.dockVisible ? '' : 'content';
+
         if ($scope.dockVisible) {
             //TODO Provavelmente vai virar outro controller isso
             var url = config.urls.base + '/file/' + syncTreeView.node.file;
@@ -25,6 +31,8 @@ angular.module("PowerGed").controller('container', function ($scope, $http, sync
             });
         }
     }
+
+    
 
     $scope.expandTree = function (node) {
         syncTreeView.setNode(node);

@@ -1,5 +1,6 @@
-<div class="content flex-column" ng-controller="container">
-    <!-- <nav id="tools">
+<div class=" flex-column" ng-controller="container">
+    <div ng-class="adjustPaddingLeft">
+        <!-- <nav id="tools">
         <div class="nav-wrapper teal">
             <ul id="nav-mobile" class="left">
                 <li>
@@ -22,60 +23,61 @@
     </nav> -->
 
 
-    <div ng-if="list.items" class="flex-row">
-        <table class="bordered">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Nome</th>
-                    <th>Data de Criação</th>
-                    <th>Informações Adicionais</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in list.items">
-                    <td ng-if="item.type == 'folder'" class="flex-icon clickable-icon folder-closed" ng-click="expandTree(item)"></td>
-                    <td ng-if="item.type == 'item'" class="flex-icon clickable-icon file-icon" ng-click="expandTree(item)"></td>
-                    <td>{{item.name}}</td>
-                    <td colspan="2">{{item.createdAt}}</td>
-                    <!-- <td ng-if="item.fields">{{item.fields.length}} Campos</td>
-                    <td ng-if="item.items">{{item.items.length}} Arquivos</td> -->
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div ng-if="list.fields" class="flex-row">
-        <div class="flex-item full-width">
-            <table class="bordered" id="info-fields">
+        <div ng-if="list.items" class="flex-row">
+            <table class="bordered">
                 <thead>
                     <tr>
-                        <th>Campo</th>
-                        <th>Valor</th>
                         <th></th>
+                        <th>Nome</th>
+                        <th>Data de Criação</th>
+                        <th>Informações Adicionais</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="field in list.fields">
-                        <td>{{field.name}}</td>
-                        <td>{{field.value}}</td>
-                        <td></td>
+                    <tr ng-repeat="item in list.items">
+                        <td ng-if="item.type == 'folder'" class="flex-icon clickable-icon folder-closed" ng-click="expandTree(item)"></td>
+                        <td ng-if="item.type == 'item'" class="flex-icon clickable-icon file-icon" ng-click="expandTree(item)"></td>
+                        <td>{{item.name}}</td>
+                        <td colspan="2">{{item.createdAt}}</td>
+                        <!-- <td ng-if="item.fields">{{item.fields.length}} Campos</td>
+                        <td ng-if="item.items">{{item.items.length}} Arquivos</td> -->
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="dock" ng-show="!dockVisible">
-            <button class="btn" ng-click="hideDock()">
-                <i class="material-icons">chevron_left</i>
-            </button>
-        </div>
-        <div class="dock expanded" ng-show="dockVisible">
-            <div class="dock-toolbar">
+        <div ng-if="list.fields" class="flex-row">
+            <div class="flex-item full-width">
+                <table class="bordered" id="info-fields">
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="field in list.fields">
+                            <td>{{field.name}}</td>
+                            <td>{{field.value}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="dock" ng-show="!dockVisible">
                 <button class="btn" ng-click="hideDock()">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-icons">chevron_left</i>
                 </button>
             </div>
-            <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image">
-            <embed src="{{pdfUrl}}" type="application/pdf" width="800px" height="600px" ng-if="pdf">
+            <div class="dock expanded" ng-show="dockVisible">
+                <div class="dock-toolbar">
+                    <button class="btn" ng-click="hideDock()">
+                        <i class="material-icons">chevron_right</i>
+                    </button>
+                </div>
+                <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image">
+                <embed src="{{pdfUrl}}" type="application/pdf" width="800px" height="600px" ng-if="pdf">
+            </div>
         </div>
     </div>
 </div>
