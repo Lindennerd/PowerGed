@@ -13,6 +13,11 @@ angular.module("PowerGed").factory('syncTreeView', function($rootScope){
         this.publishContainer();
     }
 
+    sharedService.setContainerWidth = function(treeWidth) {
+        this.containerWidth = treeWidth;
+        this.updateContainerWidthEvent();
+    }
+
     sharedService.updateTreeSearchResult = function(result) {
         this.node = result;
         this.publishSearchEvent();
@@ -33,6 +38,10 @@ angular.module("PowerGed").factory('syncTreeView', function($rootScope){
 
     sharedService.publishSearchEvent = function() {
         $rootScope.$broadcast('handleSearchResult');
+    }
+
+    sharedService.updateContainerWidthEvent = function() {
+        $rootScope.$broadcast('handleUpdateContainerWidth');
     }
 
     return sharedService;

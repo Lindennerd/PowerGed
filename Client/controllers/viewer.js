@@ -14,4 +14,12 @@ angular.module("PowerGed")
                 syncSearchPanel.toggle();
             }
         }
+
+        $scope.$on('angular-resizable.resizing', function(event, args){
+            syncTreeView.setContainerWidth(args.width);
+        })
+    
+        $scope.$on("angular-resizable.resizeEnd", function (event, args) {
+            //console.log('end '+args.width);
+        });
     });

@@ -2,6 +2,7 @@ angular.module('PowerGed')
     .controller('searchPanel', function ($scope, $http, basesService, syncTreeView, modalAlertService) {
         $('.tooltipped').tooltip({ delay: 50 });
         $scope.searchParameters = [];
+        $scope.searchPanelWidth = { 'margin-left': '290px' };
 
         $scope.selectSearchTypeChange = function () {
             if ($scope.searchType == "0") { /* Por Índice */
@@ -37,13 +38,16 @@ angular.module('PowerGed')
                     }
                 }
             }
-
             callback();
         }
 
         $scope.$on('handleSyncSearchPanel', function () {
             $scope.visible = !$scope.visible;
         });
+
+        $scope.$on('handleUpdateContainerWidth', function () {
+            $scope.searchPanelWidth['margin-left'] =  syncTreeView.containerWidth.containerWidth + 'px';
+        })
 
         $scope.hidePanel = function () { $scope.visible = false; }
 

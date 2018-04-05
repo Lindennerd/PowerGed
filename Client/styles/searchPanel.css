@@ -1,8 +1,9 @@
 #searchPanel {
-    margin-left: 290px;
+    /* margin-left: 290px; */
     position: fixed;
     bottom: -20px;
-    width: calc(100% - 290px);
+    /* width: calc(100% - 290px); */
+    right: 0;
     height: 85%;
     padding: 10px;
     border-top: solid 1px #eee;
