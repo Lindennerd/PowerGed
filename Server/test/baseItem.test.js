@@ -1,6 +1,7 @@
 var server = require('../app');
 var request = require('supertest')(server);
 var should = require('should');
+var fs = require('fs');
 
 var sampleItem = require('./mocks/sampleItem');
 var sampleFolder = require('./mocks/sampleFolder');
@@ -56,7 +57,21 @@ describe('#2 POST /baseItems', function () {
             }).expect(function(res){
                 console.log(res.InsertedId);
             }).end(done);
-    })
+    });
+
+    it('Testa o upload de um arquivo GRANDE para o sistema', function (done) {
+        this.timeout(5000);
+        request.post('/baseItems')
+            .field('parameters', JSON.stringify({
+                "baseName": "Funcionarios Pouco Açucar",
+                "path": ",Setor de Vendas,CallCenter,",
+                "item": sampleItem,
+            }))
+            .attach('file', '/1/copel.txt')
+            .expect(function(res){
+                console.log(res.text);
+            }).end(done);
+    });
 });
 
 describe("#3 PUT /baseItems", function () {

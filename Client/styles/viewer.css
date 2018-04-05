@@ -4,6 +4,10 @@ body {
   flex-direction: column;
 }
 
+.rg-right {
+  width: 30px !important;
+}
+
 @media only screen and (min-width : 992px) {
   .side-nav {
     top: 65px; 

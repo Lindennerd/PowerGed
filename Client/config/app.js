@@ -1,4 +1,4 @@
-var app = angular.module("PowerGed", ["ngRoute", "treeControl"]);
+var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl"]);
 
 app.config(function($routeProvider){
     $routeProvider.when('/', {

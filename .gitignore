@@ -58,3 +58,5 @@ typings/
 # dotenv environment variables file
 .env
 
+Server/test.js
+Server/test/mocks/test_image.png

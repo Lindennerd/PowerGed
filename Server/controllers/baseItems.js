@@ -1,5 +1,6 @@
 var database = require('../database');
 var express = require('express');
+var fileR = require('../file');
 
 var baseItemsRouter = express.Router();
 
@@ -12,7 +13,7 @@ baseItemsRouter.get('/', function (req, res) {
         var collection = db.collection(req.query.baseName.toString());
         var filterJson = JSON.parse(req.query.filter);
 
-        if(req.query.projection) {
+        if (req.query.projection) {
             var projection = JSON.parse(req.query.projection);
             collection.find(filterJson, projection).toArray(function (err, docs) {
                 res.send(docs);
@@ -26,37 +27,43 @@ baseItemsRouter.get('/', function (req, res) {
 });
 
 baseItemsRouter.post('/', function (req, res) {
-    function insertItem (collection, item, callback) {
+    var params = req.body.parameters ? JSON.parse(req.body.parameters) : req.body;  
+
+    var file = new fileR(
+        params.file ? params.file : req.files, 
+        params.fileName ? params.fileName : req.files.file.name);
+
+    database.connect(function (db) {
+        var collection = db.collection(params.baseName);
+        var item = params.item;
+        item.path = params.path;
+
+        if (file.hasFile()) {
+            file.extractContent(req.files.file.mimetype, function(err, content) {
+                if(err) res.status(500).send(err);
+                else {
+                    item.content = content;
+                    database.uploadFile(file, fileName, function (uploaded) {
+                        item.file = uploaded._id;
+                        insertItem(collection, item, function (id) {
+                            res.send(id);
+                        });
+                    });
+                }
+            });
+        } else {
+            insertItem(collection, item, function (id) {
+                res.send(id);
+            });
+        }
+    });
+
+    function insertItem(collection, item, callback) {
         collection.insertOne(item).then(function (result) {
             var insertedId = result.insertedId;
             callback({ "insertedId": insertedId });
         });
     }
-
-    database.connect(function (db) {
-        var collection = db.collection(req.body.baseName);
-        var item = req.body.item;
-        item.path = req.body.path;
-
-        if (req.body.file) {
-            if(req.body.file.startsWith('data:')) {
-                req.body.file = req.body.file.replace(/(data:.*base64,)/, '')
-            }
-
-            var fileBinary = new Buffer(req.body.file, 'base64');
-            var fileName = req.body.fileName ? req.body.fileName : 'a-file';
-            database.uploadFile(fileBinary, fileName ,function (file) {
-                item.file = file._id;
-                insertItem(collection, item, function(id) {
-                    res.send(id);
-                });
-            });
-        } else {
-            insertItem(collection, item, function(id) {
-                res.send(id);
-            });
-        }
-    });
 });
 
 baseItemsRouter.put('/', function (req, res) {
