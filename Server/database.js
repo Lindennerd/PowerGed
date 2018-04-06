@@ -7,9 +7,7 @@ var assert = require('assert');
 var config = require('./config');
 
 function connect(callback) {
-    console.log('-1');
     mongo.MongoClient.connect(config.mongoConnection, function (err, client) {
-        console.log('0');
         if (err) callback(null, err);
         else {
             callback(client.db(config.database), function () {

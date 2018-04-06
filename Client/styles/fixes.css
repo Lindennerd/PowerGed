@@ -2,6 +2,11 @@
     margin-top: 15%;
 }
 
+.file-viewer {
+    width: 800px;
+    height: 600px;
+}
+
 /* @media (min-width: 994px) {
     .element-center {
         margin: 0%;

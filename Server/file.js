@@ -32,21 +32,22 @@ file.prototype.extractContent = function (mimetype, callback) {
     if (mimetype === 'application/pdf') {
         tmp.dir(function (err, path) {
             var tmpFile = path + tmp.fileName + '.pdf';
-            console.log(tmpFile);
             fs.writeFile(tmpFile, self.data, function () {
                 pdfReader(tmpFile, null, config.pdftotext, function (err, result) {
                     if (err) callback(err)
                     else {
-                        callback(result.join());
+                        callback(null, result.join());
+                        return;
                     }
                 });
             });
         });
 
-    }
-
-    if (mimetype === 'plain/text') {
-        callback(null, this.data.toString('utf-8'));
+    } else {
+        if (mimetype === 'plain/text') {
+            callback(null, this.data.toString('utf-8'));
+            return;
+        }
     }
 }
 

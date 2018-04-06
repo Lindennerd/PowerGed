@@ -1,36 +1,65 @@
-angular.module("PowerGed").controller('container', function ($scope, $http, syncTreeView, filesService, loadingService) {
-    $('.tooltipped').tooltip({ delay: 50 });
+angular.module("PowerGed")
+    .controller('container', function ($scope, $http, syncTreeView, filesService, loadingService) {
 
-    $scope.containerWidth = { 'padding-left': '290px' };
+        $scope.containerWidth = { 'padding-left': '290px' };
+        $scope.dockWidth = '0';
 
-    $scope.hideDock = function () {
-        $scope.dockVisible = !$scope.dockVisible;
+        $scope.expandTree = function (node) {
+            syncTreeView.setNode(node);
+        }
 
-        if ($scope.dockVisible) {
-            //TODO Provavelmente vai virar outro controller isso
-            var url = config.urls.base + '/file/' + syncTreeView.node.file;
-            $http.head(url).then(function (response) {
-                var headers = response.headers();
-                if (headers['content-type'] == 'application/pdf') {
+        $scope.handleFileLoading = function(event) {
+            console.log('loaded!');
+        }
+
+        $scope.$on('handleSyncContainer', function () {
+            $scope.list = syncTreeView.node;
+            $scope.dockVisible = false;
+
+            if (syncTreeView.node.type === 'item' 
+                    && $scope.dockWidth > 170 
+                    && $scope.currentLoadedFile !== syncTreeView.node.file) {
+                        loadFile();
+            }
+        });
+
+        $scope.$on('handleUpdateContainerWidth', function () {
+            $scope.containerWidth['padding-left'] = syncTreeView.containerWidth + 'px';
+        });
+
+        $scope.$on('angular-resizable.resizing', function (event, args) {
+            if (event.targetScope.rDirections.indexOf('left') != -1) {
+                $scope.dockWidth = args.width;
+            }
+        })
+
+        $scope.$on('angular-resizable.resizeEnd', function (event, args) {
+            if (event.targetScope.rDirections.indexOf('left') != -1
+                && args.width > 170
+                && $scope.currentLoadedFile !== syncTreeView.node.file) {
+                    loadFile();
+            }
+        })
+
+        function loadFile() {
+            filesService.loadFile(syncTreeView.node.file, function (err, type, url) {
+                resetScope();
+
+                if (err) $scope.fileLoadError = 'Não foi possível carregar o arquivo';
+                if (type == 'application/pdf') {
                     $scope.pdf = true;
                     $scope.pdfUrl = url;
+                    $scope.currentLoadedFile = syncTreeView.node.file;
+                    $scope.fileLoadError = null;
                 }
             });
         }
-    }
 
-    $scope.expandTree = function (node) {
-        syncTreeView.setNode(node);
-    }
+        function resetScope() {
+            $scope.pdf = false;
+            $scope.pdfUrl = '';
+            $scope.currentLoadedFile = null;
+            $scope.fileLoadError = null;
+        }
 
-    $scope.$on('handleSyncContainer', function () {
-        $scope.list = syncTreeView.node;
-        $scope.actionsBar = true;
-        $scope.dockVisible = false;
     });
-
-    $scope.$on('handleUpdateContainerWidth', function () {
-        $scope.containerWidth['padding-left'] = syncTreeView.containerWidth + 'px';
-    })
-
-});

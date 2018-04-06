@@ -3,7 +3,6 @@
     width: 50%;
 }
 
-
     .flex-icon:hover {
         background-color: lightgrey;
         cursor: pointer;
@@ -55,7 +54,11 @@ padding: 8px;
     .dock .btn {
         padding: 0 0.3rem;
     }
-  
+
+.rg-left {
+    width: 15px !important;
+    background: #eee;
+}
 
 @media only screen and (max-width : 992px) {
     .content {

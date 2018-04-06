@@ -40,10 +40,11 @@ baseItemsRouter.post('/', function (req, res) {
 
         if (file.hasFile()) {
             file.extractContent(req.files.file.mimetype, function(err, content) {
+                if(!content) content = '';
                 if(err) res.status(500).send(err);
                 else {
                     item.content = content;
-                    database.uploadFile(file, fileName, function (uploaded) {
+                    database.uploadFile(file.data, file.fileName, function (uploaded) {
                         item.file = uploaded._id;
                         insertItem(collection, item, function (id) {
                             res.send(id);

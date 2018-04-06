@@ -41,19 +41,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="dock" ng-show="!dockVisible">
-                <button class="btn" ng-click="hideDock()">
-                    <i class="material-icons">chevron_left</i>
-                </button>
-            </div>
-            <div class="dock expanded" ng-show="dockVisible">
-                <div class="dock-toolbar">
-                    <button class="btn" ng-click="hideDock()">
-                        <i class="material-icons">chevron_right</i>
-                    </button>
-                </div>
-                <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image">
-                <embed src="{{pdfUrl}}" type="application/pdf" width="800px" height="600px" ng-if="pdf">
+            <div class="dock expanded" resizable r-directions="['left']" rNoThrottle>
+                <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image"  class="file-viewer"/>
+                <embed src="{{pdfUrl}}" type="application/pdf" ng-if="pdf" 
+                    style="background: transparent url(images/download.png) no-repeat center;" />
+                <div class="card-panel teal lighten-2" ng-if="fileLoadError">{{fileLoadError}}</div>
             </div>
         </div>
     </div>

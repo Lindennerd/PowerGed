@@ -16,7 +16,9 @@ angular.module("PowerGed")
         }
 
         $scope.$on('angular-resizable.resizing', function(event, args){
-            syncTreeView.setContainerWidth(args.width);
+            if(event.targetScope.rDirections.indexOf('right') != -1) {
+                syncTreeView.setContainerWidth(args.width);
+            }
         })
     
         $scope.$on("angular-resizable.resizeEnd", function (event, args) {
