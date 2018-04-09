@@ -31,7 +31,7 @@ angular.module("PowerGed")
             if (event.targetScope.rDirections.indexOf('left') != -1) {
                 $scope.dockWidth = args.width;
             }
-        })
+        });
 
         $scope.$on('angular-resizable.resizeEnd', function (event, args) {
             if (event.targetScope.rDirections.indexOf('left') != -1
@@ -39,7 +39,7 @@ angular.module("PowerGed")
                 && $scope.currentLoadedFile !== syncTreeView.node.file) {
                     loadFile();
             }
-        })
+        });
 
         function loadFile() {
             filesService.loadFile(syncTreeView.node.file, function (err, type, url) {
@@ -51,6 +51,18 @@ angular.module("PowerGed")
                     $scope.pdfUrl = url;
                     $scope.currentLoadedFile = syncTreeView.node.file;
                     $scope.fileLoadError = null;
+                }
+
+                if(type.startsWith('text/plain')) {
+                    $scope.txt = true;
+                    $scope.currentLoadedFile = syncTreeView.node.file;
+                    $scope.textUrl = url;                    
+                }
+
+                if(type.startsWith('image')) {
+                    $scope.image = true;
+                    $scope.currentLoadedFile = syncTreeView.node.file;
+                    $scope.imageUrl = url;                    
                 }
             });
         }
