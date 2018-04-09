@@ -6,7 +6,7 @@
     right: 0;
     height: 85%;
     padding: 10px;
-    border-top: solid 1px #eee;
+    border: solid 1px;
     box-shadow: #888888 3px 1px 6px 0px;
     background: white;
     display: flex;

@@ -43,8 +43,7 @@
             </div>
             <div class="dock expanded" resizable r-directions="['left']" rNoThrottle>
                 <img src="{{imageUrl}}" alt="" class="materialboxed" ng-if="image"  class="file-viewer"/>
-                <embed src="{{pdfUrl}}" type="application/pdf" ng-if="pdf" 
-                    style="background: transparent url(images/download.png) no-repeat center;" />
+                <embed src="{{pdfUrl}}" type="application/pdf" ng-if="pdf" class="file-viewer"/>
                 <div class="card-panel teal lighten-2" ng-if="fileLoadError">{{fileLoadError}}</div>
             </div>
         </div>
