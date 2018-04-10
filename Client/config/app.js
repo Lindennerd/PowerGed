@@ -15,7 +15,7 @@ app.config(function($routeProvider){
 config = (function(){
     return {
         urls : {
-            base: 'http://localhost:6969'
+            base: 'http://localhost:9085'
         }
     }
 })();

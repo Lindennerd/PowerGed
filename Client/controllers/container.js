@@ -43,10 +43,9 @@ angular.module("PowerGed")
 
         function loadFile() {
             filesService.loadFile(syncTreeView.node.file, function (err, type, url) {
-                resetScope();
-
                 if (err) $scope.fileLoadError = 'Não foi possível carregar o arquivo';
                 if (type == 'application/pdf') {
+                    resetScope();
                     $scope.pdf = true;
                     $scope.pdfUrl = url;
                     $scope.currentLoadedFile = syncTreeView.node.file;
@@ -54,12 +53,14 @@ angular.module("PowerGed")
                 }
 
                 if(type.startsWith('text/plain')) {
+                    resetScope();
                     $scope.txt = true;
                     $scope.currentLoadedFile = syncTreeView.node.file;
                     $scope.textUrl = url;                    
                 }
 
                 if(type.startsWith('image')) {
+                    resetScope();
                     $scope.image = true;
                     $scope.currentLoadedFile = syncTreeView.node.file;
                     $scope.imageUrl = url;                    
@@ -69,7 +70,13 @@ angular.module("PowerGed")
 
         function resetScope() {
             $scope.pdf = false;
+            $scope.image = false;
+            $scope.txt = false;
+
             $scope.pdfUrl = '';
+            $scope.textUrl = '';
+            $scope.imageUrl = '';
+            
             $scope.currentLoadedFile = null;
             $scope.fileLoadError = null;
         }

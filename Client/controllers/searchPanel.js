@@ -31,6 +31,10 @@ angular.module('PowerGed')
 
         $scope.search = function () {
             getParameters($scope.searchType, function (searchParameters) {
+                if(typeof searchParameters != Array) {
+                    searchParameters = [searchParameters];
+                }
+
                 $http.get(config.urls.base + '/search', {
                     params: {
                         baseName: syncTreeView.baseName,
@@ -52,6 +56,8 @@ angular.module('PowerGed')
         }
 
         function getParameters(searchType, callback) {
+            var searchParameters = [];
+
             if (searchType == 1) {
                 callback({ 'q': $scope.fullTextSearchParameter });
             } else {
@@ -65,8 +71,8 @@ angular.module('PowerGed')
                             for (var index in splittedStr) {
                                 searchParameters.push({
                                     $and: [
-                                        { "field.name": input.name },
-                                        { "field.value": splittedStr[index] }
+                                        { "fields.name": input.name },
+                                        { "fields.value": splittedStr[index] }
                                     ]
                                 });
                             }
@@ -74,8 +80,8 @@ angular.module('PowerGed')
                         } else {
                             searchParameters.push({
                                 $and: [
-                                    { "field.name": input.name },
-                                    { "field.value": input.value }
+                                    { "fields.name": input.name },
+                                    { "fields.value": input.value }
                                 ]
                             });
                         }

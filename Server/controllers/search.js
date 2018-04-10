@@ -4,11 +4,13 @@ var searchRouter = express.Router();
 
 searchRouter.get('/', function(req, res){
     if(req.query.parameters && req.query.baseName) {
-        if(req.searchType == "0") {
-            var parameters = req.query.parameters.map(function(element, index){
-                return JSON.parse(element);
-            });
-    
+        if(req.query.searchType == "0") {
+            // var parameters = req.query.parameters.map(function(element, index){
+            //     return JSON.parse(element);
+            // });
+
+            var parameters = JSON.parse(req.query.parameters);
+
             database.connect(function(db){
                 db.collection(req.query.baseName).find({$or: parameters})
                     .toArray(function(err, docs){
