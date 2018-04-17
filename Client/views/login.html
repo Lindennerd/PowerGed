@@ -16,7 +16,12 @@
                 </div>
             </form>
 
-            <p>{{message}}</p>
+            <div ng-show="message" class="card red">
+                <div class="card-content white-text">
+                    <div class="card-title">Erro!</div>
+                    <span>{{message}}</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

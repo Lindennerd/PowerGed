@@ -1,4 +1,5 @@
-angular.module("PowerGed").controller('treeview', function ($scope, $http, $cacheFactory, syncTreeviewContainer, basesService, loadingService) {
+angular.module("PowerGed").controller('treeview', 
+    function ($scope, $http, syncTreeviewContainer, basesService, loadingService) {
 
     $scope.treeOptions = {
         nodeChildren: "items",
@@ -19,7 +20,6 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, $cach
     };
 
     $scope.toggleTreeView = true; 
-    $scope.cache = $cacheFactory('treeviewCache');
 
     $scope.$on('handleSyncTreeView', function(){
         $scope.expandedNodes.push(syncTreeviewContainer.node);
@@ -37,7 +37,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, $cach
 
     $scope.$on('handleSearchResult', function() { 
         if(angular.isUndefined($scope.cache.get('currentState'))){
-            $scope.cache.put('currentState', $scope.dataForTheTree);
+            localStorage.setItem('currentState', JSON.stringify($scope.dataForTheTree));
         }
 
         $scope.dataForTheTree = syncTreeviewContainer.searchResult;
@@ -45,7 +45,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, $cach
 
 
     $scope.$on('handleCloseSearchResults', function() {
-        $scope.dataForTheTree = $scope.cache.get('currentState');
+        $scope.dataForTheTree = JSON.parse(localStorage.getItem('currentState')); 
     })
 
     $scope.showSearch = function() {

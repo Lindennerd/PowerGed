@@ -1,5 +1,5 @@
 angular.module("PowerGed")
-    .controller('viewer', function ($scope, $http, syncSearchPanel, modalAlertService, syncTreeviewContainer) {
+    .controller('viewer', function ($scope, $http, $location ,syncSearchPanel, modalAlertService, syncTreeviewContainer) {
         $('.dropdown-button').dropdown();
         $('.modal').modal();
         $('select').material_select();
@@ -13,6 +13,11 @@ angular.module("PowerGed")
             } else {
                 syncSearchPanel.toggle();
             }
+        }
+
+        $scope.exit = function() {
+            localStorage.clear();
+            $location.path('/login');
         }
 
         $scope.$on('angular-resizable.resizing', function(event, args){

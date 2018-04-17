@@ -1,6 +1,20 @@
 var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl"]);
 
-app.config(function($routeProvider){
+app.factory('authErrorInterceptor', function($q, $location) {
+    return {
+        responseError: function(error) {
+            if(error.statusText === 'Unauthorized') {
+                $location.path('/login');
+            }
+
+            return $q.reject(error);
+        }
+    }
+});
+
+app.config(function($routeProvider, $httpProvider){
+    $httpProvider.interceptors.push('authErrorInterceptor');
+
     $routeProvider.when('/', {
         templateUrl: 'views/viewer.html',
         title: 'POWER GED',

@@ -13,7 +13,10 @@ authRouter.post('/', (req, res) => {
 
     ad.authenticate(req.body.username, req.body.password, function (err, auth) {
         if (err) {
-            res.status(400).send(err);
+            var errorMessage = null;
+                if(err.code === "ENOENT") errorMessage = 'Falha de comunicação com o servidor';
+            if(err.code === 49) errorMessage = 'Credenciais inválidas';
+            res.status(400).send(errorMessage || err);
         } else {
             if (auth) {
                 const token = jwt.sign({ username: req.body.username }, config.secret, {

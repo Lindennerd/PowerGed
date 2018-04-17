@@ -25,7 +25,7 @@ app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '500mb' }));
 app.use(cors());
 
-app.use('/node/powerged/client', express.static('../Client'));
+app.use('/node/powerged/client', express.static('./Client'));
 
 app.use('/node/powerged/server/auth', authentication);
 app.use('/node/powerged/server/file', authMiddleware, file);
