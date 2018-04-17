@@ -1,11 +1,11 @@
 angular.module('PowerGed')
-    .controller('searchPanel', function ($scope, $http, basesService, syncTreeView, modalAlertService) {
-        $('.tooltipped').tooltip({ delay: 50 });
+    .controller('searchPanel', function ($scope, $http, basesService, syncTreeviewContainer, modalAlertService, loadingService) {
+
         $scope.searchPanelWidth = { 'margin-left': '290px' };
 
         $scope.selectSearchTypeChange = function () {
-            if ($scope.searchType == "0") { /* Por Índice */
-                basesService.getBaseConfiguration(syncTreeView.baseName, function (response) {
+            if ($scope.searchType == "0") { 
+                basesService.getBaseConfiguration(syncTreeviewContainer.baseName, function (response) {
                     $scope.fields = response;
                 });
             }
@@ -16,8 +16,8 @@ angular.module('PowerGed')
         });
 
         $scope.$on('handleUpdateContainerWidth', function () {
-            $scope.searchPanelWidth['margin-left'] = syncTreeView.containerWidth.containerWidth + 'px';
-        })
+            $scope.searchPanelWidth['margin-left'] = syncTreeviewContainer.containerWidth.containerWidth + 'px';
+        });
 
         $scope.hidePanel = function () { $scope.visible = false; }
 
@@ -34,18 +34,19 @@ angular.module('PowerGed')
                 if(typeof searchParameters != Array) {
                     searchParameters = [searchParameters];
                 }
-
+                loadingService.start('treeview-loading');
                 $http.get(config.urls.base + '/search', {
                     params: {
-                        baseName: syncTreeView.baseName,
+                        baseName: syncTreeviewContainer.baseName,
                         parameters: searchParameters,
                         searchType: $scope.searchType
                     }
 
                 }).then(function (result) {
+                    loadingService.stop('treeview-loading');
                     if (result.data.length > 0) {
                         $scope.visible = false;
-                        syncTreeView.updateTreeSearchResult(result.data);
+                        syncTreeviewContainer.viewSearchResult(result.data, $scope.fields);
                     } else {
                         modalAlertService.showAlert('A Pesquisa não obteve nenhum resultado', 'info');
                     }
@@ -55,6 +56,7 @@ angular.module('PowerGed')
             });
         }
 
+        // TODO : REFACTOR * directive *
         function getParameters(searchType, callback) {
             var searchParameters = [];
 
@@ -90,4 +92,4 @@ angular.module('PowerGed')
                 callback(searchParameters);
             }
         }
-    })
+    });

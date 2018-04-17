@@ -1,4 +1,4 @@
-angular.module("PowerGed").controller('treeview', function ($scope, $http, syncTreeView, basesService, loadingService) {
+angular.module("PowerGed").controller('treeview', function ($scope, $http, $cacheFactory, syncTreeviewContainer, basesService, loadingService) {
 
     $scope.treeOptions = {
         nodeChildren: "items",
@@ -18,30 +18,42 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncT
         }
     };
 
-    $scope.$on('handleSyncTreeView', function(){
-        $scope.expandedNodes.push(syncTreeView.node);
-        $scope.selectedNode = syncTreeView.node;  
-        $scope.showSelected(syncTreeView.node);  
-        
-        $scope.showToggle(syncTreeView.node, true);
-    });
+    $scope.toggleTreeView = true; 
+    $scope.cache = $cacheFactory('treeviewCache');
 
-    $scope.$on('handleSearchResult', function() {
-        $scope.dataForTheTree = syncTreeView.node;
+    $scope.$on('handleSyncTreeView', function(){
+        $scope.expandedNodes.push(syncTreeviewContainer.node);
+        $scope.selectedNode = syncTreeviewContainer.node;  
+        $scope.showSelected(syncTreeviewContainer.node);  
+        
+        $scope.showToggle(syncTreeviewContainer.node, true);
     });
 
     $scope.$on('handleSyncToggleTreeview', function() {
-        $scope.toggle = syncTreeView.toggleTreeViewFlag;
+        $scope.toggleTreeView = !$scope.toggleTreeView 
         var sideBar = document.querySelector('#sidebar-left');
-        sideBar.style.transform = $scope.toggle ? 'translateX(0)' : 'translateX(-100%)';
+        sideBar.style.transform = $scope.toggleTreeView ? 'translateX(0)' : 'translateX(-100%)';
     });
+
+    $scope.$on('handleSearchResult', function() { 
+        if(angular.isUndefined($scope.cache.get('currentState'))){
+            $scope.cache.put('currentState', $scope.dataForTheTree);
+        }
+
+        $scope.dataForTheTree = syncTreeviewContainer.searchResult;
+    });
+
+
+    $scope.$on('handleCloseSearchResults', function() {
+        $scope.dataForTheTree = $scope.cache.get('currentState');
+    })
 
     $scope.showSearch = function() {
         $scope.showSearch = true;
     }
 
     $scope.showSelected = function (node) {
-        syncTreeView.updateContainer(node);
+        syncTreeviewContainer.updateContainer(node);
     }
 
     $scope.chooseDatabase = function() {
@@ -53,7 +65,7 @@ angular.module("PowerGed").controller('treeview', function ($scope, $http, syncT
 
             $scope.selectedNode = $scope.dataForTheTree[0];          
             $scope.showSelected($scope.dataForTheTree[0]);
-            syncTreeView.baseName = $scope.baseName;
+            syncTreeviewContainer.baseName = $scope.baseName;
         });
     }
 

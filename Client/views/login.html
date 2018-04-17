@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" id="login" ng-controller="login">
     <div class="row ">
-        <div class="col s4 border border-dark rounded login-area">
+        <div class="col l6 m12 s12 border border-dark rounded login-area">
             <h1 class="text-center">PowerGED</h1>
-            <form ng-controller="login">
+            <form>
                 <div class="input-field">
-                    <label for="name">Email:</label>
-                    <input type="email" class="form-control" ng-model="name" id="name">
+                    <label for="name">Nome de Usuário:</label>
+                    <input type="text" class="form-control" ng-model="username" id="name">
                 </div>
                 <div class="input-field">
                     <label for="password">Senha:</label>
@@ -15,6 +15,8 @@
                     <button class="form-control btn btn-primary orange darken-1" ng-click="loginClick()" id="btn-login" type="submit">Entrar</button>
                 </div>
             </form>
+
+            <p>{{message}}</p>
         </div>
     </div>
 </div>

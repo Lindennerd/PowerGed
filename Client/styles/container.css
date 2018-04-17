@@ -4,7 +4,7 @@
 }
 
     .flex-icon:hover {
-        background-color: lightgrey;
+        background-color: lightgrey !important;
         cursor: pointer;
     }
   
@@ -16,6 +16,7 @@ width: 100%;
 background-position: center !important; 
 padding: 8px;
 }
+
 
     .clickable-icon.folder-closed {
         background: url(../image/folder-closed.png) no-repeat;

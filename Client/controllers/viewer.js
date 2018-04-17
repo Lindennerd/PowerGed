@@ -1,5 +1,5 @@
 angular.module("PowerGed")
-    .controller('viewer', function ($scope, $http, syncSearchPanel, modalAlertService, syncTreeView) {
+    .controller('viewer', function ($scope, $http, syncSearchPanel, modalAlertService, syncTreeviewContainer) {
         $('.dropdown-button').dropdown();
         $('.modal').modal();
         $('select').material_select();
@@ -8,7 +8,7 @@ angular.module("PowerGed")
         $('.button-collapse').sideNav({ draggable: false });
 
         $scope.toggleSearchPanel = function () {
-            if (!syncTreeView.baseName) {
+            if (!syncTreeviewContainer.baseName) {
                 modalAlertService.showAlert('Selecione alguma base antes de fazer uma pesquisa', 'warning');
             } else {
                 syncSearchPanel.toggle();
@@ -17,7 +17,7 @@ angular.module("PowerGed")
 
         $scope.$on('angular-resizable.resizing', function(event, args){
             if(event.targetScope.rDirections.indexOf('right') != -1) {
-                syncTreeView.setContainerWidth(args.width);
+                syncTreeviewContainer.setContainerWidth(args.width);
             }
         })
     

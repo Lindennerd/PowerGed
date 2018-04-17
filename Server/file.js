@@ -33,9 +33,12 @@ file.prototype.extractContent = function (mimetype, callback) {
         tmp.dir(function (err, path) {
             var tmpFile = path + tmp.fileName + '.pdf';
             fs.writeFile(tmpFile, self.data, function () {
+        
                 pdfReader(tmpFile, null, config.pdftotext, function (err, result) {
                     if (err) callback(err)
                     else {
+        
+                        
                         callback(null, result.join());
                         return;
                     }

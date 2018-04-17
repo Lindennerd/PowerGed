@@ -3,11 +3,26 @@ var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeContro
 app.config(function($routeProvider){
     $routeProvider.when('/', {
         templateUrl: 'views/viewer.html',
-        title: 'POWER GED'
+        title: 'POWER GED',
+        resolve: {
+            'check': function($location) {
+                var token = localStorage.getItem('auth');
+                if(!token) {
+                    $location.path('/login');
+                }
+            }
+        }
     })
     .when('/login', {
-        templateUrl:"/views/login.html",
+        templateUrl:"views/login.html"
+    })
+    .otherwise({
+        redirectTo: '/'
     });
+});
+
+app.run(function($http) {
+    $http.defaults.headers.common['x-access-token'] = localStorage.getItem('auth');
 });
 
 /* GLOBAL VARS */
@@ -15,7 +30,7 @@ app.config(function($routeProvider){
 config = (function(){
     return {
         urls : {
-            base: 'http://localhost:9085'
+            base: 'http://localhost:6969/node/powerged/server'
         }
     }
 })();

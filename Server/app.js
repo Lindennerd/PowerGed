@@ -4,36 +4,38 @@ var cors = require('cors');
 var fileUpload = require('express-fileupload');
 var morgan = require('morgan');
 
+var config = require('./config');
 var db = require('./database');
 
+var authMiddleware = require('./authMiddleware');
 var base = require('./controllers/base');
 var baseSchema = require('./controllers/baseSchema');
 var baseItems = require('./controllers/baseItems');
 var file = require('./controllers/file');
 var search = require('./controllers/search');
+var authentication = require('./controllers/authentication');
 
 var app = express();
 
-app.use(morgan('combined'));
+app.set('secret', config.secret);
+
+app.use(morgan('dev'));
 app.use(fileUpload());
 app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '500mb' }));
 app.use(cors());
 
-app.use('/client', express.static('./Client'));
+app.use('/node/powerged/client', express.static('../Client'));
 
-app.get('/', function (req, res) {
-    res.redirect('/client');
-})
+app.use('/node/powerged/server/auth', authentication);
+app.use('/node/powerged/server/file', authMiddleware, file);
+app.use('/node/powerged/server/base', authMiddleware, base);
+app.use('/node/powerged/server/baseSchema', authMiddleware, baseSchema);
+app.use('/node/powerged/server/baseItems', authMiddleware, baseItems);
+app.use('/node/powerged/server/search', authMiddleware, search);
 
-app.use('/file', file);
-app.use('/base', base);
-app.use('/baseSchema', baseSchema);
-app.use('/baseItems', baseItems);
-app.use('/search', search);
-
-app.listen(9085, function () {
-    console.log('Servindo na porta ' + process.env.PORT);
+app.listen(config.devPort, function () {
+    console.log('Servindo na porta ' + config.devPort);
 })
 
 module.exports = app;
