@@ -1,3 +1,9 @@
 {
-    "pdftotext": "C:\\poppler\\bin\\pdftotext.exe"
+    "pdftotext": "C:\\poppler\\bin\\pdftotext.exe",
+    "activeDirectory": {
+        "url": "LDAP://powerpatria.corp",
+        "baseDN": "CN=Users,DC=domain",
+        "username": "POWERPATRIA\\localservices",
+        "password": "p1m4g1ng"
+    }
 }
