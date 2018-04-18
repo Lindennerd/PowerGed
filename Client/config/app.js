@@ -2,6 +2,10 @@ var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeContro
 
 app.factory('authErrorInterceptor', function($q, $location) {
     return {
+        request: function(config) {                                         
+            config.headers['x-access-token'] =  localStorage.getItem('auth');           
+            return config;
+        },
         responseError: function(error) {
             if(error.statusText === 'Unauthorized') {
                 $location.path('/login');
@@ -35,9 +39,6 @@ app.config(function($routeProvider, $httpProvider){
     });
 });
 
-app.run(function($http) {
-    $http.defaults.headers.common['x-access-token'] = localStorage.getItem('auth');
-});
 
 /* GLOBAL VARS */
 
