@@ -28,7 +28,8 @@ app.use(cors());
 app.use('/node/powerged/client', express.static('./Client'));
 
 app.use('/node/powerged/server/auth', authentication);
-app.use('/node/powerged/server/file', authMiddleware, file);
+app.use('/node/powerged/server/file', file);
+
 app.use('/node/powerged/server/base', authMiddleware, base);
 app.use('/node/powerged/server/baseSchema', authMiddleware, baseSchema);
 app.use('/node/powerged/server/baseItems', authMiddleware, baseItems);
