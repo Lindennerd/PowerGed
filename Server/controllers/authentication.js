@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const ad = require('../activeDirectory');
+const ad = require('../services/activeDirectory');
 const config = require('../config');
 
 const authRouter = express.Router();

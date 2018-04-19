@@ -1,7 +1,7 @@
 var fs = require('fs');
 var pdfReader = require('pdf-text-extract');
 var tmp = require('tmp');
-var config = require('./config');
+var config = require('../config');
 
 function file(file, fileName) {
     this.convertToBuffer(file);

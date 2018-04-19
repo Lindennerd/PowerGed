@@ -1,4 +1,4 @@
-var database = require('../database');
+var database = require('../services/database');
 var express = require('express');
 var basesRouter = express.Router();
 

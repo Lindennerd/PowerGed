@@ -2,6 +2,7 @@ var server = require('../app');
 var request = require('supertest')(server);
 var should = require('should');
 var fs = require('fs');
+var helpers = require('./helpers');
 
 var sampleItem = require('./mocks/sampleItem');
 var sampleFolder = require('./mocks/sampleFolder');
@@ -9,9 +10,11 @@ var sampleEmptyFolder = require('./mocks/sampleEmptyFolder');
 var image = require('./mocks/image')
 
 describe('#1 GET /baseItems', function () {
+    before(helpers.authentication);
     it('Testa se consegue buscar os itens da raiz da árvore', function (done) {
         this.timeout(300);
         request.get('/baseItems')
+            .set('x-access-token', helpers.token)
             .query({
                 "baseName": "Funcionarios Pouco Açucar",
                 "filter": "{ \"path\": null }"

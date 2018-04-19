@@ -1,14 +1,10 @@
-var database = require('../database');
+var database = require('../services/database');
 var express = require('express');
 var searchRouter = express.Router();
 
 searchRouter.get('/', function(req, res){
     if(req.query.parameters && req.query.baseName) {
         if(req.query.searchType == "0") {
-            // var parameters = req.query.parameters.map(function(element, index){
-            //     return JSON.parse(element);
-            // });
-
             var parameters = JSON.parse(req.query.parameters);
 
             database.connect(function(db){

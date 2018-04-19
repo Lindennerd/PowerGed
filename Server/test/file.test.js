@@ -4,7 +4,7 @@ var should = require('should');
 
 describe('#GET /file ', function(){
     it('Testa a pesquisa de um arquivo no gridFS', function(done){
-        request.get('/file/'+"5abba0eb661d3f248898b6e3")
+        request.get('/file/5abba0eb661d3f248898b6e3')
             .expect(function(result){
                 result.type.should.equal('image/jpeg');
             }).end(done);

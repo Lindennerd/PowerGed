@@ -5,9 +5,9 @@ var fileUpload = require('express-fileupload');
 var morgan = require('morgan');
 
 var config = require('./config');
-var db = require('./database');
+var db = require('./services/database');
 
-var authMiddleware = require('./authMiddleware');
+var authMiddleware = require('./middlewares/authMiddleware');
 var base = require('./controllers/base');
 var baseSchema = require('./controllers/baseSchema');
 var baseItems = require('./controllers/baseItems');
@@ -25,7 +25,7 @@ app.use(bodyParser.json({ limit: '500mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '500mb' }));
 app.use(cors());
 
-app.use('/node/powerged/client', express.static('./Client'));
+app.use('/node/powerged/client', express.static('../Client'));
 
 app.use('/node/powerged/server/auth', authentication);
 app.use('/node/powerged/server/file', file);

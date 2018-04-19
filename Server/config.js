@@ -10,5 +10,11 @@ module.exports = {
         "baseDN": "CN=Users,DC=domain",
         "username": "POWERPATRIA\\localservices",
         "password": "p1m4g1ng"
+    },
+    test: {
+        credentials: {
+            username: 'powerpatria\\luiz.paulo',
+            password: 'panamericana'
+        }
     }
 }

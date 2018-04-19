@@ -4,7 +4,7 @@ var fs = require('fs');
 var stream = require('stream');
 
 var assert = require('assert');
-var config = require('./config');
+var config = require('../config');
 
 function connect(callback) {
     mongo.MongoClient.connect(config.mongoConnection, function (err, client) {

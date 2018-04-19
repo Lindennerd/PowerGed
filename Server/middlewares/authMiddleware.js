@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const config = require('./config');
+const config = require('../config');
 
 const authMiddlewareRouter = express.Router();
 
@@ -15,7 +15,7 @@ authMiddlewareRouter.use((req, res, next) => {
             }
         });
     } else {
-        res.send('Nenhum token recebido');  
+        res.send({message: 'Nenhum token recebido'});  
     }
 });
 

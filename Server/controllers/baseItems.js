@@ -1,6 +1,6 @@
-var database = require('../database');
+var database = require('../services/database');
 var express = require('express');
-var fileR = require('../file');
+var fileR = require('../services/file');
 
 var baseItemsRouter = express.Router();
 
