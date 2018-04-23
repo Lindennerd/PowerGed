@@ -46,7 +46,8 @@ angular.module('PowerGed')
                     loadingService.stop('treeview-loading');
                     if (result.data.length > 0) {
                         $scope.visible = false;
-                        syncTreeviewContainer.viewSearchResult(result.data, $scope.fields);
+                        syncTreeviewContainer.viewSearchResult(result.data, $scope.fields, 
+                            searchType === 1 ? searchParameters : null);
                     } else {
                         modalAlertService.showAlert('A Pesquisa não obteve nenhum resultado', 'info');
                     }

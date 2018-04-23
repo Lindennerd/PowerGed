@@ -24,6 +24,7 @@
     "jquery": "^3.3.1",
     "angular-tree-control": "^0.2.28",
     "materialize": "^0.100.2",
-    "angular-material": "^1.1.6"
+    "angular-material": "^1.1.6",
+    "angular-pdfjs-viewer": "^0.8.1"
   }
 }

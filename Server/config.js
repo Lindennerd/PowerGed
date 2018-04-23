@@ -1,5 +1,5 @@
 module.exports = {
-    mongoConnection: 'mongodb://SVR19:27017',
+    mongoConnection: 'mongodb://localhost:27017',
     database: 'PowerGed',
     pdftotext: 'C:/poppler/bin/pdftotext.exe',
     devPort: 6969,

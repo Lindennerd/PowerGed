@@ -22,7 +22,7 @@ angular.module("PowerGed")
         });
 
         $scope.seeDocument = function(node) {
-            filesService.showViewer(node);
+            filesService.showViewer(node, typeof(searchParameteres) != Array);
         }
         
         $scope.$on('handleSearchResult', function () {
@@ -30,6 +30,7 @@ angular.module("PowerGed")
 
             $scope.searchResults = syncTreeviewContainer.searchResult;
             $scope.searchFields = syncTreeviewContainer.fields;
+            $scope.searchParameteres = syncTreeviewContainer.searchParameteres;
         });
 
         $scope.$on('handleUpdateContainerWidth', function () {

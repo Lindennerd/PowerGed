@@ -1,4 +1,4 @@
-angular.module('PowerGed').controller('fileViewer', function($scope, filesService ){
+angular.module('PowerGed').controller('fileViewer', function ($scope, filesService) {
 
     $scope.dockWidth = 0;
 
@@ -12,42 +12,45 @@ angular.module('PowerGed').controller('fileViewer', function($scope, filesServic
         if (event.targetScope.rDirections.indexOf('left') != -1
             && args.width > 170
             && $scope.currentLoadedFile !== filesService.node.file) {
-                loadFile();
+            loadFile();
         }
     });
 
-    $scope.$on('openFile', function() {
+    $scope.$on('openFile', function (args) {
         $scope.dockVisible = true;
-        loadFile();
+        loadFile(args);
     })
 
-    $scope.$on('resetEvent', function() {
+    $scope.$on('resetEvent', function () {
         resetScope();
     });
 
-    function loadFile() {
-        filesService.loadFile(filesService.node.file, function (err, type, url) {
+    function loadFile(params) {
+        filesService.loadFile(filesService.node.file, function (err, type, file) {
             if (err) $scope.fileLoadError = 'Não foi possível carregar o arquivo';
             if (type == 'application/pdf') {
                 resetScope();
+                var url = config.urls.base + '/file/' + file + (params ? '#search="' + params + '"' : '');
                 $scope.pdf = true;
                 $scope.pdfUrl = url;
                 $scope.currentLoadedFile = filesService.node.file;
                 $scope.fileLoadError = null;
             }
 
-            if(type.startsWith('text/plain')) {
+            if (type.startsWith('text/plain')) {
                 resetScope();
+                var url = config.urls.base + '/file/' + file;
                 $scope.txt = true;
                 $scope.currentLoadedFile = filesService.node.file;
-                $scope.textUrl = url;                    
+                $scope.textUrl = url;
             }
 
-            if(type.startsWith('image')) {
+            if (type.startsWith('image')) {
                 resetScope();
+                var url = config.urls.base + '/file/' + file;
                 $scope.image = true;
                 $scope.currentLoadedFile = filesService.node.file;
-                $scope.imageUrl = url;                    
+                $scope.imageUrl = url;
             }
         });
     }
@@ -60,7 +63,7 @@ angular.module('PowerGed').controller('fileViewer', function($scope, filesServic
         $scope.pdfUrl = '';
         $scope.textUrl = '';
         $scope.imageUrl = '';
-        
+
         $scope.currentLoadedFile = null;
         $scope.fileLoadError = null;
     }

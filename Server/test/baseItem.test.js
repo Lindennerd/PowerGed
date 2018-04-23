@@ -36,6 +36,8 @@ describe('#1 GET /baseItems', function () {
 });
 
 describe('#2 POST /baseItems', function () {
+    before(helpers.authentication);
+    
     it('Testa inserção de documento na base', function (done) {
         this.timeout(300);
         request.post('/baseItems')
@@ -78,6 +80,8 @@ describe('#2 POST /baseItems', function () {
 });
 
 describe("#3 PUT /baseItems", function () {
+    before(helpers.authentication);
+    
     it('Testa a edição de um documento na base', function (done) {
         this.timeout(300);
         request.put('/baseItems')
@@ -94,6 +98,7 @@ describe("#3 PUT /baseItems", function () {
 });
 
 describe("#4 DELETE /baseItems", function () {
+    before(helpers.authentication);    
     it('Testa a deleção de um documento na base', function (done) {
         this.timeout(300);
         request.delete('/baseItems')

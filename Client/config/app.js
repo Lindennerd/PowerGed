@@ -1,4 +1,4 @@
-var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl"]);
+var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl", "pdfjsViewer"]);
 
 app.factory('authErrorInterceptor', function($q, $location) {
     return {
@@ -45,7 +45,8 @@ app.config(function($routeProvider, $httpProvider){
 config = (function(){
     return {
         urls : {
-            base: 'http://localhost:6969/node/powerged/server'
+            base: 'http://localhost:6969/node/powerged/server',
+            viewerjs: 'http://localhost:6969/node/powerged/viewerjs/#../server/file/'
         }
     }
 })();

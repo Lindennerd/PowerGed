@@ -16,7 +16,7 @@
                 <div ng-repeat="field in fields" class="row">
                     <div class="input-field col s12">
                         <label for="">{{field}}</label>
-                        <input type="text" class="searchInput" name="{{field}}">
+                        <input type="text" class="searchInput" name="{{field}}"ng-model="searchParameters[$index]">
                     </div>
                 </div>
             </div>

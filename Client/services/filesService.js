@@ -4,7 +4,7 @@ angular.module("PowerGed").factory('filesService', function($rootScope, $http){
             var url = config.urls.base + '/file/' + file;
             $http.head(url).then(function (response) {
                 var headers = response.headers();
-                callback(null, headers['content-type'], url);
+                callback(null, headers['content-type'], file);
             }, function(err) {
                 callback(err);
             });
@@ -14,9 +14,9 @@ angular.module("PowerGed").factory('filesService', function($rootScope, $http){
             return 0;
         },
 
-        showViewer: function(node) {
+        showViewer: function(node, parameters) {
             this.node = node;
-            $rootScope.$broadcast('openFile');
+            $rootScope.$broadcast('openFile', parameters);
         },
 
         resetViewer: function() {

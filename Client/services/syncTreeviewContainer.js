@@ -18,9 +18,11 @@ angular.module("PowerGed").factory('syncTreeviewContainer', function ($rootScope
         $rootScope.$broadcast('handleUpdateContainerWidth');
     }
 
-    sharedService.viewSearchResult = function (result, fields) {
+    sharedService.viewSearchResult = function (result, fields, searchParameters) {
         this.searchResult = result;
         this.fields = fields;
+        this.searchParameters = searchParameters;
+        
         $rootScope.$broadcast('handleSearchResult');
     }
 
