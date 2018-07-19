@@ -1,7 +1,9 @@
 angular.module("PowerGed")
-    .controller('container', function ($scope, $http, syncTreeviewContainer, filesService, loadingService) {
+    .controller('container', function ($scope, syncTreeviewContainer, filesService) {
 
         $scope.containerWidth = { 'padding-left': '290px' };
+
+        $scope.containerObj = {};
 
         $scope.expandTree = function (node) {
             syncTreeviewContainer.setNode(node);
@@ -15,7 +17,11 @@ angular.module("PowerGed")
         }
 
         $scope.$on('handleSyncContainer', function () {
-            $scope.node = syncTreeviewContainer.node;
+            $scope.node = syncTreeviewContainer.node ? syncTreeviewContainer.node : { 
+                type: 'null', 
+                items: ['Nenhum documento ou pasta encontrada'] 
+            };
+
             if ($scope.node.type == "item" || $scope.searchResults) {
                 filesService.showViewer($scope.node);
             }

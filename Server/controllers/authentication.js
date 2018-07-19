@@ -13,7 +13,6 @@ authRouter.post('/', (req, res) => {
 
     ad.authenticate(req.body.username, req.body.password, function (err, auth) {
         if (false) {
-            console.log(err);            
             var errorMessage = null;
                 if(err.code === "ENOENT") errorMessage = 'Falha de comunicação com o servidor';
             if(err.code === 49) errorMessage = 'Credenciais inválidas';
@@ -29,7 +28,6 @@ authRouter.post('/', (req, res) => {
             }
         }
     });
-
 });
 
 authRouter.get('/', (req, res) => {

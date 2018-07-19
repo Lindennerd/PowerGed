@@ -28,17 +28,17 @@ baseItemsRouter.get('/', function (req, res) {
 
 baseItemsRouter.post('/', function (req, res) {
     var params = req.body.parameters ? JSON.parse(req.body.parameters) : req.body;  
-
-    var file = new fileR(
-        params.file ? params.file : req.files, 
-        params.fileName ? params.fileName : req.files.file.name);
-
     database.connect(function (db) {
         var collection = db.collection(params.baseName);
         var item = params.item;
         item.path = params.path;
+        item.createdAt = item.createdAt ? item.createdAt : new Date().toLocaleDateString();
 
-        if (file.hasFile()) {
+        if (params.file || req.file || req.files) {
+            var file = new fileR(
+                params.file ? params.file : req.files, 
+                params.fileName ? params.fileName : req.files.file.name);
+
             file.extractContent(req.files.file.mimetype, function(err, content) {
                 if(!content) content = '';
                 if(err) res.status(500).send(err);

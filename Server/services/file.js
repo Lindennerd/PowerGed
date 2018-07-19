@@ -29,28 +29,29 @@ file.prototype.convertToBuffer = function (file) {
 file.prototype.extractContent = function (mimetype, callback) {
     var self = this;
 
-    if (mimetype === 'application/pdf') {
-        tmp.dir(function (err, path) {
-            var tmpFile = path + tmp.fileName + '.pdf';
-            fs.writeFile(tmpFile, self.data, function () {
-        
-                pdfReader(tmpFile, null, config.pdftotext, function (err, result) {
-                    if (err) callback(err)
-                    else {
-        
-                        
-                        callback(null, result.join());
-                        return;
-                    }
+    switch (mimetype) {
+        case 'application/pdf':
+            tmp.dir(function (err, path) {
+                var tmpFile = path + tmp.fileName + '.pdf';
+                fs.writeFile(tmpFile, self.data, function () {
+
+                    pdfReader(tmpFile, null, config.pdftotext, function (err, result) {
+                        if (err) callback(err);
+                        else {
+                            callback(null, result.join());
+                            return;
+                        }
+                    });
                 });
             });
-        });
+            break;
 
-    } else {
-        if (mimetype === 'plain/text') {
+        case 'plain/text':
             callback(null, this.data.toString('utf-8'));
-            return;
-        }
+            break;
+
+        default:
+            callback({ message: 'Invalid file type ' + mimetype });
     }
 }
 

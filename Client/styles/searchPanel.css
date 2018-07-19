@@ -38,6 +38,11 @@
     max-height: 65vh;
 }
 
+.excludeItem {
+    float: right;
+    margin-top: -8px;
+}
+
 @media (max-width: 768px) {
     #searchPanel {
         padding: initial;

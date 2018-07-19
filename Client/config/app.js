@@ -1,4 +1,4 @@
-var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl", "pdfjsViewer"]);
+var app = angular.module("PowerGed", ["angularResizable", "ngRoute", "treeControl", "pdfjsViewer", "googlechart"]);
 
 app.factory('authErrorInterceptor', function($q, $location) {
     return {
@@ -34,6 +34,9 @@ app.config(function($routeProvider, $httpProvider){
     .when('/login', {
         templateUrl:"views/login.html"
     })
+    .when('/graph', {
+        templateUrl: "views/graph.html"
+    })
     .otherwise({
         redirectTo: '/'
     });
@@ -45,8 +48,8 @@ app.config(function($routeProvider, $httpProvider){
 config = (function(){
     return {
         urls : {
-            base: 'http://localhost:6969/node/powerged/server',
-            viewerjs: 'http://localhost:6969/node/powerged/viewerjs/#../server/file/'
+            base: 'http://localhost:6969/node/chged/server',
+            viewerjs: 'http://localhost:6969/node/chged/viewerjs/#../server/file/'
         }
     }
 })();

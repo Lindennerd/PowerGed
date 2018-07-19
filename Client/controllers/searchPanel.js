@@ -2,9 +2,10 @@ angular.module('PowerGed')
     .controller('searchPanel', function ($scope, $http, basesService, syncTreeviewContainer, modalAlertService, loadingService) {
 
         $scope.searchPanelWidth = { 'margin-left': '290px' };
+        $scope.searchParameters = [];
 
         $scope.selectSearchTypeChange = function () {
-            if ($scope.searchType == "0") { 
+            if ($scope.searchType == "0") {
                 basesService.getBaseConfiguration(syncTreeviewContainer.baseName, function (response) {
                     $scope.fields = response;
                 });
@@ -22,23 +23,18 @@ angular.module('PowerGed')
         $scope.hidePanel = function () { $scope.visible = false; }
 
         $scope.clear = function () {
-            var inputs = document.querySelectorAll('.searchInput');
-            for (var index in inputs) {
-                var input = inputs[index];
-                input.value = '';
-            }
+            $scope.searchParameters = [];
+            $scope.fieldName = '';
+            $scope.fieldValue = '';
         }
 
         $scope.search = function () {
             getParameters($scope.searchType, function (searchParameters) {
-                if(typeof searchParameters != Array) {
-                    searchParameters = [searchParameters];
-                }
                 loadingService.start('treeview-loading');
                 $http.get(config.urls.base + '/search', {
                     params: {
                         baseName: syncTreeviewContainer.baseName,
-                        parameters: searchParameters,
+                        parameters: JSON.stringify(searchParameters),
                         searchType: $scope.searchType
                     }
 
@@ -46,51 +42,40 @@ angular.module('PowerGed')
                     loadingService.stop('treeview-loading');
                     if (result.data.length > 0) {
                         $scope.visible = false;
-                        syncTreeviewContainer.viewSearchResult(result.data, $scope.fields, 
-                            searchType === 1 ? searchParameters : null);
+                        syncTreeviewContainer.viewSearchResult(result.data, $scope.fields,
+                            $scope.searchType === 1 ? searchParameters : null);
                     } else {
                         modalAlertService.showAlert('A Pesquisa não obteve nenhum resultado', 'info');
                     }
                 }).catch(function (err) {
+                    loadingService.stop('treeview-loading');
                     modalAlertService.showAlert('Algo deu errado :(', 'danger');
                 });
             });
         }
 
-        // TODO : REFACTOR * directive *
-        function getParameters(searchType, callback) {
-            var searchParameters = [];
+        $scope.addField = function () {
+            $scope.searchParameters.push({
+                fieldName: $scope.fieldName,
+                fieldValue: $scope.fieldValue
+            });
 
+            $scope.fieldName = '';
+            $scope.fieldValue = '';
+        }
+
+        function getParameters(searchType, callback) {
             if (searchType == 1) {
                 callback({ 'q': $scope.fullTextSearchParameter });
             } else {
-                var inputs = document.querySelectorAll('.searchInput');
-
-                for (var index in inputs) {
-                    var input = inputs[index];
-                    if (input.value && input.value != '') {
-                        if (input.value.includes('&')) {
-                            var splittedStr = input.value.split('&');
-                            for (var index in splittedStr) {
-                                searchParameters.push({
-                                    $and: [
-                                        { "fields.name": input.name },
-                                        { "fields.value": splittedStr[index] }
-                                    ]
-                                });
-                            }
-
-                        } else {
-                            searchParameters.push({
-                                $and: [
-                                    { "fields.name": input.name },
-                                    { "fields.value": input.value }
-                                ]
-                            });
-                        }
+                callback($scope.searchParameters.map(function (par, index) {
+                    return {
+                        $and: [
+                            { "fields.name": par.fieldName },
+                            { "fields.value": par.fieldValue }
+                        ]
                     }
-                }
-                callback(searchParameters);
+                }));
             }
         }
     });

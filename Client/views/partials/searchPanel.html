@@ -13,11 +13,26 @@
         <div class="body">
             <div class="col s12" ng-show="searchType == '0'">
                 <p>Caso deseje adicionar mais de um valor por campo, separe cada um utilizando um "e comercial" (&)</p>
-                <div ng-repeat="field in fields" class="row">
-                    <div class="input-field col s12">
-                        <label for="">{{field}}</label>
-                        <input type="text" class="searchInput" name="{{field}}"ng-model="searchParameters[$index]">
+                <div class="row">
+                    <div class="col s3">
+                        <label for="fieldName">Nome do Campo</label>
+                        <input type="text" class="searchInput" ng-model="fieldName" name="fieldName" list="fieldsName">
                     </div>
+                    <div class="col s6">
+                        <label for="fieldValue">Valor</label>
+                        <input type="text" class="searchInput" ng-model="fieldValue" name="fieldValue">
+                    </div>
+                    <div class="col s3">
+                        <button class="btn" ng-click="addField()">Adicionar</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="collection">
+                        <li ng-repeat="par in searchParameters" class="collection-item">
+                            {{par.fieldName}} - {{par.fieldValue}}
+                            <a href ng-click="excludeItem()" class="btn red close excludeItem">x</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="input-field col s12" ng-show="searchType == '1'">
@@ -33,6 +48,10 @@
                 <button class="btn" ng-click="clear();">Limpar</button>
             </div>
         </div>
+
+        <datalist id="fieldsName">
+            <option value="{{field}}" ng-repeat="field in fields"></option>
+        </datalist>
 
     </div>
 </div>

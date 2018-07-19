@@ -46,6 +46,7 @@ angular.module("PowerGed").factory('basesService', function ($http, loadingServi
                 .then(function (response) {
                     if (response.data.length > 0) {
                         loadingService.stop('treeview-loading');
+                        console.log(response.data);
                         callback(response.data);
                     }
                 })
