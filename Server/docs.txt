@@ -1,7 +1,0 @@
-https://github.com/nisaacson/pdf-text-extract
-
-* http://blog.alivate.com.au/poppler-windows/
-* https://ghostscript.com/download/gsdnld.html
-* https://sourceforge.net/projects/tesseract-ocr-alt/?source=typ_redirect
-
-Verificar PATH para essas dependencias
